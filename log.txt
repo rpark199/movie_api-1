@@ -403,3 +403,87 @@ Timestamp: Mon Feb 05 2024 18:56:07 GMT-0600 (Central Standard Time)
 URL: /img/favicon.ico
 Timestamp: Mon Feb 05 2024 18:56:07 GMT-0600 (Central Standard Time)
 
+URL: /documentation.html
+Timestamp: Mon Feb 05 2024 18:58:14 GMT-0600 (Central Standard Time)
+
+URL: /js/promise-polyfill.js
+Timestamp: Mon Feb 05 2024 18:58:14 GMT-0600 (Central Standard Time)
+
+URL: /img/myFlixLogo.png
+Timestamp: Mon Feb 05 2024 18:58:14 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Mon Feb 05 2024 18:58:14 GMT-0600 (Central Standard Time)
+
+URL: /js/fetch-polyfill.js
+Timestamp: Mon Feb 05 2024 18:58:14 GMT-0600 (Central Standard Time)
+
+URL: /img/popcorn.png
+Timestamp: Mon Feb 05 2024 18:58:14 GMT-0600 (Central Standard Time)
+
+URL: /img/favicon.ico
+Timestamp: Mon Feb 05 2024 18:58:14 GMT-0600 (Central Standard Time)
+
+URL: /documentation.html
+Timestamp: Mon Feb 05 2024 18:58:15 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Mon Feb 05 2024 18:58:15 GMT-0600 (Central Standard Time)
+
+URL: /img/myFlixLogo.png
+Timestamp: Mon Feb 05 2024 18:58:15 GMT-0600 (Central Standard Time)
+
+URL: /js/promise-polyfill.js
+Timestamp: Mon Feb 05 2024 18:58:15 GMT-0600 (Central Standard Time)
+
+URL: /js/fetch-polyfill.js
+Timestamp: Mon Feb 05 2024 18:58:15 GMT-0600 (Central Standard Time)
+
+URL: /img/popcorn.png
+Timestamp: Mon Feb 05 2024 18:58:15 GMT-0600 (Central Standard Time)
+
+URL: /img/favicon.ico
+Timestamp: Mon Feb 05 2024 18:58:15 GMT-0600 (Central Standard Time)
+
+URL: /index.html
+Timestamp: Mon Feb 05 2024 18:58:19 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Mon Feb 05 2024 18:58:19 GMT-0600 (Central Standard Time)
+
+URL: /img/myFlixLogo.png
+Timestamp: Mon Feb 05 2024 18:58:19 GMT-0600 (Central Standard Time)
+
+URL: /js/promise-polyfill.js
+Timestamp: Mon Feb 05 2024 18:58:19 GMT-0600 (Central Standard Time)
+
+URL: /js/fetch-polyfill.js
+Timestamp: Mon Feb 05 2024 18:58:19 GMT-0600 (Central Standard Time)
+
+URL: /img/popcorn.png
+Timestamp: Mon Feb 05 2024 18:58:19 GMT-0600 (Central Standard Time)
+
+URL: /img/favicon.ico
+Timestamp: Mon Feb 05 2024 18:58:19 GMT-0600 (Central Standard Time)
+
+URL: /index.html
+Timestamp: Mon Feb 05 2024 18:58:20 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Mon Feb 05 2024 18:58:20 GMT-0600 (Central Standard Time)
+
+URL: /img/myFlixLogo.png
+Timestamp: Mon Feb 05 2024 18:58:20 GMT-0600 (Central Standard Time)
+
+URL: /js/promise-polyfill.js
+Timestamp: Mon Feb 05 2024 18:58:20 GMT-0600 (Central Standard Time)
+
+URL: /js/fetch-polyfill.js
+Timestamp: Mon Feb 05 2024 18:58:20 GMT-0600 (Central Standard Time)
+
+URL: /img/popcorn.png
+Timestamp: Mon Feb 05 2024 18:58:20 GMT-0600 (Central Standard Time)
+
+URL: /img/favicon.ico
+Timestamp: Mon Feb 05 2024 18:58:20 GMT-0600 (Central Standard Time)
+
