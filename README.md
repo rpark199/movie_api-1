@@ -4,7 +4,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/eahowell/movie_api)
 ![GitHub watchers](https://img.shields.io/github/watchers/eahowell/movie_api)
 
-Welcome to the myFLix API! Find the information for favorite movies (directors, actors, genres, etc.) Users can register, log in, and manage their favorite movies.
+Welcome to the myFlix API! Find the information for favorite movies (directors, actors, genres, etc.) Users can register, log in, and manage their favorite movies.
 
 ## Table of Contents
 
