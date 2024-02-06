@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(189, 189, 189);
+}
+
+header {
+    background-color: rgb(245, 206, 206);
+}
+
+.page-container {
+    padding: 25px;
+    background-color: rgb(235, 235, 235);
+  }
+
+  .navpanel {
+    margin: 200px 35px ;
+    padding: 25px;
+  }
+
+
+  .docContent {
+    padding-left: 300px;
+  }
+  
+
+   .docContent :first-child:before {
+    height: 225px;
+    content: "";
+    display:block;
+  } 
