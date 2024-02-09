@@ -49,11 +49,16 @@ http
         response.end(JSON.stringify(err));
         return;
       }
+      if (filePath.includes("css")){
+        response.writeHead(200, { "Content-Type": "text/css" });
+      response.write(data);
+      response.end();
+      } else {
 
       response.writeHead(200, { "Content-Type": "text/html" });
       response.write(data);
       response.end();
-    });
+    }});
   })
   .listen(8080);
 console.log("My test server is running on Port 8080.");
