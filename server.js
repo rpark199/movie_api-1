@@ -20,7 +20,7 @@ http
         }
       }
     );
-
+debugger
     if (q.pathname.includes("documentation")) {
       filePath = __dirname + "/documentation.html";
     } else if (q.pathname === "/") {
