@@ -25,6 +25,18 @@ http
       filePath = __dirname + "/documentation.html";
     } else if (q.pathname === "/") {
       filePath = "index.html";
+    } else if (q.pathname.includes("css")){
+      // Serve static files from a 'public' folder or directly from the root.
+      // You might need to adjust the path depending on your project structure.
+      filePath = __dirname + "css/" + q.pathname;
+    } else if (q.pathname.includes("js")){
+      // Serve static files from a 'public' folder or directly from the root.
+      // You might need to adjust the path depending on your project structure.
+      filePath = __dirname + "js/" + q.pathname;
+    } else if (q.pathname.includes("img")){
+      // Serve static files from a 'public' folder or directly from the root.
+      // You might need to adjust the path depending on your project structure.
+      filePath = __dirname + "img/" + q.pathname;
     } else {
       // Serve static files from a 'public' folder or directly from the root.
       // You might need to adjust the path depending on your project structure.

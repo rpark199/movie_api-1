@@ -616,3 +616,12 @@ Timestamp: Mon Feb 05 2024 19:06:16 GMT-0600 (Central Standard Time)
 URL: /css/styles.css
 Timestamp: Mon Feb 05 2024 19:06:22 GMT-0600 (Central Standard Time)
 
+URL: /index.html
+Timestamp: Fri Feb 09 2024 10:45:39 GMT-0600 (Central Standard Time)
+
+URL: /css/styles.css
+Timestamp: Fri Feb 09 2024 10:45:39 GMT-0600 (Central Standard Time)
+
+URL: /img/myFlixLogo.png
+Timestamp: Fri Feb 09 2024 10:45:39 GMT-0600 (Central Standard Time)
+
