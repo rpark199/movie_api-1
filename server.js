@@ -1,6 +1,7 @@
 const http = require("http"),
   fs = require("fs"),
   url = require("url");
+  path = require("path");
 
 http
   .createServer((request, response) => {
@@ -22,13 +23,19 @@ http
 
     if (q.pathname.includes("documentation")) {
       filePath = __dirname + "/documentation.html";
-    } else {
+    } else if (q.pathname === "/") {
       filePath = "index.html";
+    } else {
+      // Serve static files from a 'public' folder or directly from the root.
+      // You might need to adjust the path depending on your project structure.
+      filePath = __dirname + q.pathname;
     }
 
     fs.readFile(filePath, (err, data) => {
       if (err) {
-        throw err;
+        response.writeHead(404);
+        response.end(JSON.stringify(err));
+        return;
       }
 
       response.writeHead(200, { "Content-Type": "text/html" });
