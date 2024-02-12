@@ -23,23 +23,17 @@ http
 
     if (q.pathname.includes("documentation")) {
       filePath = __dirname + "/documentation.html";
-    } else if (q.pathname === "/") {
-      filePath = "index.html";
-    } else if (q.pathname.includes("css")){
-      // Serve static files from a 'public' folder or directly from the root.
-      // You might need to adjust the path depending on your project structure.
-      filePath = __dirname + "css/" + q.pathname;
+    }  else if (q.pathname.includes("css")){
+      filePath = __dirname + q.pathname;
     } else if (q.pathname.includes("js")){
-      // Serve static files from a 'public' folder or directly from the root.
-      // You might need to adjust the path depending on your project structure.
-      filePath = __dirname + "js/" + q.pathname;
+      filePath = __dirname + q.pathname;
     } else if (q.pathname.includes("img")){
-      // Serve static files from a 'public' folder or directly from the root.
-      // You might need to adjust the path depending on your project structure.
-      filePath = __dirname + "img/" + q.pathname;
+      filePath = __dirname + q.pathname;
+    } else if (q.pathname.includes("ico")){
+      filePath = __dirname + q.pathname;
+    }else if (q.pathname === "/") {
+      filePath = "index.html";
     } else {
-      // Serve static files from a 'public' folder or directly from the root.
-      // You might need to adjust the path depending on your project structure.
       filePath = __dirname + q.pathname;
     }
 
@@ -53,8 +47,19 @@ http
         response.writeHead(200, { "Content-Type": "text/css" });
       response.write(data);
       response.end();
-      } else {
-
+      } else if (filePath.includes("img")){
+        response.writeHead(200, { "Content-Type": "image/png" });
+      response.write(data);
+      response.end();
+      } else if (filePath.includes("js")){
+        response.writeHead(200, { "Content-Type": "text/javascript" });
+      response.write(data);
+      response.end();
+      }else if (filePath.includes("ico")){
+        response.writeHead(200, { "Content-Type": "image/x-icon" });
+      response.write(data);
+      response.end();
+      }else {
       response.writeHead(200, { "Content-Type": "text/html" });
       response.write(data);
       response.end();
