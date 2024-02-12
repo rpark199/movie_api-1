@@ -56,7 +56,7 @@ http
         response.write(data);
         response.end();
       } else if (filePath.includes("ico")) {
-        response.writeHead(200, { "Content-Type": "image/x-icon" });
+        response.writeHead(200, { "Content-Type": "image/image/vnd.microsoft.icon" });
         response.write(data);
         response.end();
       } else {
