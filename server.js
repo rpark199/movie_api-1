@@ -1,7 +1,7 @@
 const http = require("http"),
   fs = require("fs"),
   url = require("url");
-  path = require("path");
+path = require("path");
 
 http
   .createServer((request, response) => {
@@ -23,15 +23,15 @@ http
 
     if (q.pathname.includes("documentation")) {
       filePath = __dirname + "/documentation.html";
-    }  else if (q.pathname.includes("css")){
+    } else if (q.pathname.includes("css")) {
       filePath = __dirname + q.pathname;
-    } else if (q.pathname.includes("js")){
+    } else if (q.pathname.includes("js")) {
       filePath = __dirname + q.pathname;
-    } else if (q.pathname.includes("img")){
+    } else if (q.pathname.includes("img")) {
       filePath = __dirname + q.pathname;
-    } else if (q.pathname.includes("ico")){
+    } else if (q.pathname.includes("ico")) {
       filePath = __dirname + q.pathname;
-    }else if (q.pathname === "/") {
+    } else if (q.pathname === "/") {
       filePath = "index.html";
     } else {
       filePath = __dirname + q.pathname;
@@ -43,27 +43,28 @@ http
         response.end(JSON.stringify(err));
         return;
       }
-      if (filePath.includes("css")){
+      if (filePath.includes("css")) {
         response.writeHead(200, { "Content-Type": "text/css" });
-      response.write(data);
-      response.end();
-      } else if (filePath.includes("img")){
+        response.write(data);
+        response.end();
+      } else if (filePath.includes("img")) {
         response.writeHead(200, { "Content-Type": "image/png" });
-      response.write(data);
-      response.end();
-      } else if (filePath.includes("js")){
+        response.write(data);
+        response.end();
+      } else if (filePath.includes("js")) {
         response.writeHead(200, { "Content-Type": "text/javascript" });
-      response.write(data);
-      response.end();
-      }else if (filePath.includes("ico")){
+        response.write(data);
+        response.end();
+      } else if (filePath.includes("ico")) {
         response.writeHead(200, { "Content-Type": "image/x-icon" });
-      response.write(data);
-      response.end();
-      }else {
-      response.writeHead(200, { "Content-Type": "text/html" });
-      response.write(data);
-      response.end();
-    }});
+        response.write(data);
+        response.end();
+      } else {
+        response.writeHead(200, { "Content-Type": "text/html" });
+        response.write(data);
+        response.end();
+      }
+    });
   })
   .listen(8080);
 console.log("My test server is running on Port 8080.");
