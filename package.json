@@ -1,0 +1,21 @@
+{
+  "name": "movie_api",
+  "version": "1.0.0",
+  "description": "![GitHub issues](https://img.shields.io/github/issues/eahowell/movie_api?color=yellow)\r ![GitHub Repo stars](https://img.shields.io/github/stars/eahowell/movie_api)\r ![GitHub forks](https://img.shields.io/github/forks/eahowell/movie_api)\r ![GitHub watchers](https://img.shields.io/github/watchers/eahowell/movie_api)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git".
+    "url": "https://github.com/eahowell/movie_api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eahowell/movie_api/issues"
+  },
+  "homepage": "https://github.com/eahowell/movie_api"
+}
