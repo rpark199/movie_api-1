@@ -21,12 +21,20 @@ app.use(bodyParser.urlencoded({
   app.use(bodyParser.json());
   app.use(methodOverride());
 
-app.get('/', (req, res) => {
-    res.send('Welcome to my app!');
+  let myTopTen = 'public/myTopTen.json'
+
+
+  app.get('/documentation', (req, res) => {                  
+    res.sendFile('public/documentation.html', { root: __dirname });
   });
-  
-  app.get('/secreturl', (req, res) => {
-    res.send('This is a secret url with super top-secret content.');
+  app.get('/movies', (req, res) => {
+    res.json(myTopTen);
+  });
+  app.get('/index', (req, res) => {
+    res.sendFile('index.html', { root: __dirname });
+  });
+  app.get('/', (req, res) => {
+    res.send('Welcome to myFlix!');
   });
   
 //   Error handler
@@ -38,3 +46,7 @@ app.get('/', (req, res) => {
   app.listen(8080, () => {
     console.log('Your app is listening on port 8080.');
   });
+
+
+//   CREDITS
+//   "Top 100 IMDB Movies" (imdb_data_100.json) by Helena Oliveira, Observable License: [License Type]. Available at: [https://observablehq.com/@btwhelena/top-100-imdb-movies]
