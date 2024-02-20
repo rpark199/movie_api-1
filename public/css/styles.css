@@ -1,29 +1,33 @@
 body {
-    background-color: rgb(189, 189, 189);
+  background-color: rgb(189, 189, 189);
 }
 
 header {
-    background-color: rgb(245, 206, 206);
+  background-color: rgb(245, 206, 206);
 }
 
 .page-container {
-    padding: 25px;
-    background-color: rgb(235, 235, 235);
-  }
+  padding: 25px;
+  background-color: rgb(235, 235, 235);
+}
 
-  .navpanel {
-    margin: 200px 35px ;
-    padding: 25px;
-  }
+.navpanel {
+  margin: 200px 35px;
+  padding: 25px;
+}
 
+.docContent {
+  padding-left: 300px;
+}
 
-  .docContent {
-    padding-left: 300px;
-  }
-  
+.scrollspy-example :first-child::before {
+  height: 225px;
+  content: "";
+  display: block;
+}
 
-   .docContent :first-child:before {
-    height: 225px;
-    content: "";
-    display:block;
-  } 
+.depList :first-child::before {
+  height: auto;
+  content: "";
+  display: block;
+}
