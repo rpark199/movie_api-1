@@ -25,8 +25,10 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 - Lodash: ^4.17.21 
 - Body-Parser: ^1.20.2
 - Method-Override: ^3.0.0
+- UUID: ^9.0.1
 ### Dev Depenencies
 - ESlint: ^8.56.0
+- Nodemon: ^3.0.3
 
 ## Usage
 - See the API documentation for detailed info.
