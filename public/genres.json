@@ -1,0 +1,63 @@
+{
+    "Action": {
+    "description": "Movies characterized by exciting sequences, fast-paced action, and often featuring heroic protagonists.",
+    "example_movies": ["Die Hard", "Mad Max: Fury Road", "The Dark Knight"]
+  },
+  
+    "Comedy": {
+    "description": "Movies intended to make the audience laugh, often featuring humorous situations, witty dialogue, and comedic performances.",
+    "example_movies": [
+      "Superbad",
+      "The Hangover",
+      "Anchorman: The Legend of Ron Burgundy"
+    ]
+  },
+  
+    "Drama":{
+    "description": "Movies focused on realistic characters and emotional themes, often exploring complex human relationships and societal issues.",
+    "example_movies": [
+      "The Shawshank Redemption",
+      "Forrest Gump",
+      "The Godfather"
+    ]
+  },
+  
+    "Horror": {
+    "description": "Movies designed to evoke fear, suspense, and terror in the audience, often featuring supernatural elements, monsters, or psychological horror.",
+    "example_movies": ["The Shining", "Get Out", "A Nightmare on Elm Street"]
+  },
+  
+    "Science Fiction": {
+    "description": "Movies that explore speculative or futuristic concepts, often involving advanced technology, space exploration, or extraterrestrial life.",
+    "example_movies": ["Star Wars", "Blade Runner", "The Matrix"]
+  },
+  
+    "Fantasy": {
+    "description": "Movies set in imaginary worlds with fantastical elements such as magic, mythical creatures, and epic quests.",
+    "example_movies": [
+      "The Lord of the Rings",
+      "Harry Potter",
+      "Pan's Labyrinth"
+    ]
+  },
+  "Thriller": {
+    "description": "Movies characterized by intense excitement, suspense, and anticipation, often featuring plot twists and high stakes.",
+    "example_movies": ["The Silence of the Lambs", "Inception", "Se7en"]
+  },
+  "Romance": {
+    "description": "Movies centered around romantic relationships, love, and affection, often featuring emotional connections and heartwarming moments.",
+    "example_movies": ["Titanic", "The Notebook", "Pride and Prejudice"]
+  },
+  "Adventure": {
+    "description": "Movies focused on exciting journeys, exploration, and discovery, often set in exotic or dangerous locations.",
+    "example_movies": [
+      "Indiana Jones and the Raiders of the Lost Ark",
+      "Jurassic Park",
+      "The Goonies"
+    ]
+  },
+  "Animation": {
+    "description": "Movies created using animation techniques, including traditional hand-drawn animation, computer-generated imagery (CGI), and stop-motion animation.",
+    "example_movies": ["Toy Story", "Spirited Away", "The Lion King"]
+  }
+}
