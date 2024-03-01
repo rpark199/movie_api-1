@@ -498,8 +498,42 @@ let users = [
       DOByear: 2000,
     },
     lists: {
-      favorites: "",
-      toWatch: "",
+      favorites: ["Armageddon", "Forrest Gump", "Hitch"],
+      toWatch: ["Hitch"],
+    },
+  },
+  {
+    userID: 2,
+    username: "eahowell2",
+    password: "Xyz123!",
+    firstName: "Liz",
+    lastName: "Howell",
+    email: "eahowell@gmailx.com",
+    dateOfBirth: {
+      DOBmonth: 1,
+      DOBday: 1,
+      DOByear: 2000,
+    },
+    lists: {
+      favorites: ["Armageddon", "Forrest Gump", "Hitch"],
+      toWatch: ["Hitch"],
+    },
+  },
+  {
+    userID: 3,
+    username: "eahowell3",
+    password: "Xyz123!",
+    firstName: "Liz",
+    lastName: "Howell",
+    email: "eahowell@gmailx.com",
+    dateOfBirth: {
+      DOBmonth: 1,
+      DOBday: 1,
+      DOByear: 2000,
+    },
+    lists: {
+      favorites: ["Armageddon", "Forrest Gump", "Hitch"],
+      toWatch: ["Hitch"],
     },
   },
 ];
@@ -540,6 +574,22 @@ app.get("/directors/:directorName", (req, res) => {
     res.status(200).json(director);
   } else {
     res.status(400).send("The director " + directorName + " was not found");
+  }
+});
+
+// READ - GET - Return a list of ALL users to the user
+app.get("/users", (req, res) => res.status(200).json(users));
+
+// READ - GET - Return the details of a specific to the user
+app.get("/users/:username", (req, res) => {
+  const { username } = req.params;
+  const updatedUser = req.body;
+  let user = users.find((user) => user.username === username);
+
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404).send("Username " + username + " was not found.");
   }
 });
 
@@ -597,26 +647,22 @@ app.put("/users/:username", (req, res) => {
   }
 });
 
-
-//  ***START TESTING HERE
-
-
-
-// UPDATE - PATCH - Allow users to add a movie to their list of favorites
-app.patch("/users/:username/favorite/:movieTitle", (req, res) => {
+// UPDATE - PUT - Allow users to add a movie to their list of favorites
+app.put("/users/:username/favorites/:movieTitle", (req, res) => {
   const { username, movieTitle } = req.params;
   let user = users.find((user) => user.username === username);
 
   if (user) {
-    user.lists.favorites.push(movieTitle);
+    user.lists.favorites=user.lists.favorites.concat([movieTitle]);
+
     res
       .status(201)
       .send(
         "The movie " +
           movieTitle +
-          " was added to" +
+          " was added to " +
           username +
-          "'s was Favorites List."
+          "'s Favorites List."
       );
   } else {
     res.status(404).send("Username " + username + " was not found.");
@@ -637,9 +683,9 @@ app.delete("/users/:username/favorites/:movieTitle", (req, res) => {
       .send(
         "The movie " +
           movieTitle +
-          " was added to" +
+          " was removed from " +
           username +
-          "'s was Favorites List."
+          "'s Favorites List."
       );
   } else {
     res.status(404).send("Username " + username + " was not found.");
@@ -660,32 +706,32 @@ app.delete("/users/:username", (req, res) => {
 });
 
 // READ - GET - Allow users to see which actors star in which movies
-app.get("/actors/:actorName", (req, res) => {
+app.get("/actors/:actorName/movies", (req, res) => {
   const { actorName } = req.params;
-  let actor = actors.find((actor) => actor.Movies === actorName.Movies);
+  let actor = actors.find((actor) => actor.Name === actorName);
 
   if (actor) {
-    res.status(200).json(actor);
+    res.status(200).json(actor.Movies);
   } else {
     res.status(400).send("The actor's " + actorName + " was not found");
   }
 });
 
-// CREATE - POST - Allow users to create a “To Watch” list in addition to their “Favorite Movies” list
-app.patch("/users/:username/toWatch/:movieTitle", (req, res) => {
+// Update - PUT - Allow users to add movie to the “To Watch” list
+app.put("/users/:username/toWatch/:movieTitle", (req, res) => {
   const { username, movieTitle } = req.params;
   let user = users.find((user) => user.username === username);
 
   if (user) {
-    user.lists.toWatch.push(movieTitle);
+    user.lists.toWatch=user.lists.toWatch.concat([movieTitle]);
     res
       .status(201)
       .send(
         "The movie " +
           movieTitle +
-          " was added to" +
+          " was added to " +
           username +
-          "'s was To Watch List."
+          "'s To Watch List."
       );
   } else {
     res.status(404).send("Username " + username + " was not found.");
@@ -693,48 +739,47 @@ app.patch("/users/:username/toWatch/:movieTitle", (req, res) => {
 });
 
 // READ - GET - Return actorID of Actor by name
-app.get("/actors/id:actorName", (req, res) => {
+app.get("/actors/:actorName/id", (req, res) => {
   const { actorName } = req.params;
-  let actor = actors.find((actor) => actor.Movies === actorName.Movies).actorID;
+  let actorID = actors.find((actor) => actor.Name === actorName).actorID;
 
-  if (actor) {
-    res.status(200).json(actor);
+  if (actorID) {
+    res.status(200).json(actorID);
   } else {
     res.status(400).send("The actor's " + actorName + " was not found");
   }
 });
 
 // READ - GET - Return directorID of Director by name
-app.get(" /directors/id/:directorName", (req, res) => {
+app.get("/directors/:directorName/id", (req, res) => {
   const { directorName } = req.params;
-  const director = directors.find(
-    (director) => director.Name === directorName
-  ).directorID;
-  if (director) {
-    res.status(200).json(director);
+  let directorID = directors.find((director) => director.Name === directorName).directorID;
+  if (directorID) {
+    res.status(200).json(directorID);
   } else {
     res.status(400).send("The director " + directorName + " was not found");
   }
 });
 
 // READ - GET - Return userID of User by username
-app.get("/users/id/:username", (req, res) => {
+app.get("/users/:username/id", (req, res) => {
   const { username } = req.params;
-  let user = users.find((user) => user.username === username).actorID;
+  let userID = users.find((user) => user.username === username).userID;
 
-  if (user) {
-    res.status(201).send(user);
+  if (userID) {
+    res.status(201).json(userID);
   } else {
     res.status(404).send("Username " + username + " was not found.");
   }
 });
 
 // READ - GET - Return movieID of Movie by title
-app.get("/movies/id/:title", (req, res) => {
+app.get("/movies/:title/id", (req, res) => {
   const { title } = req.params;
-  const movie = movies.find((movie) => movie.Title === title).movieID;
-  if (movie) {
-    res.status(200).json(movie);
+  const movieID = movies.find((movie) => movie.Title === title).movieID;
+  
+  if (movieID) {
+    res.status(200).json(movieID);
   } else {
     res.status(400).send("The movie " + title + " was not found");
   }
