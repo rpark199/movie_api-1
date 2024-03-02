@@ -329,8 +329,6 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 
 </details>
 
-</details>
-
 <details>
   <summary><code>GET</code> <code><b>/users/[Username]</b></code> <code>(returns the details of a specific user)</code></summary>
 
