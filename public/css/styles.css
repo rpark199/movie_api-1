@@ -12,6 +12,7 @@ header {
 }
 
 .navpanel {
+  max-width: 200px;
   margin: 200px 35px;
   padding: 25px;
 }
@@ -30,4 +31,25 @@ header {
   height: auto;
   content: "";
   display: block;
+}
+.endpointsList :first-child::before {
+  height: auto;
+  content: "";
+  display: block;
+}
+.endpoints {
+  background-color: white;
+  margin: 15px;
+}
+h5 {
+  text-decoration: underline;
+}
+h6 {
+  text-decoration: underline;
+}
+/* code {
+  margin: ;
+} */
+table {
+  margin: 15px;
 }

@@ -52,7 +52,7 @@
                             <img src="img/popcorn.png" width="25" height="25" class="d-inline-block align-top"
                                 title="Author's Top Ten Picks"
                                 alt="Popcorn image that will take you to theAuthor's Top Ten Picks json" />
-                                Author's Top Ten Picks
+                            Author's Top Ten Picks
                         </a>
                     </li>
                 </ul>
@@ -87,17 +87,19 @@
                     </a>
                 </div>
             </div>
-
+            <a href="https://github.com/eahowell/movie_api/blob/main/README.md"> See additional documentation here.</a> 
             <div class="col-xl-8 docContent">
                 <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true"
-                    class="scrollspy-example" tabindex="0" >
+                    class="scrollspy-example" tabindex="0">
                     <h4 id="item-1" class="docContentHeader">
                         <img src="img/popcorn.png" width="25" height="25" class="d-inline-block align-top"
                             title="Return to Top of List"
                             alt="Popcorj image that will take you to the top of the page" />Getting Started
                     </h4>
+                    <a href="https://github.com/eahowell/movie_api/blob/main/README.md"> See additional documentation here.</a> 
                     <p>Welcome to the myFLix API!</p>
                     <p>
+                        
                         This API will allow you to find the information for favorite
                         movies (directors, actors, genres, etc.)
                     </p>
@@ -114,17 +116,18 @@
                             title="Return to Top of List"
                             alt="Popcorj image that will take you to the top of the page" />Dependencies
                     </h4>
-                    <p><ul class="list-group depList">
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                              <div class="ms-2 me-auto">
+                    <p>
+                    <ul class="list-group depList">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
                                 <div class="fw-bold">Global</div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">None</li>
-                                  </ul>
-                              </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                              <div class="ms-2 me-auto">
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
                                 <div class="fw-bold">Local</div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">Morgan: ^1.10.0</li>
@@ -133,26 +136,1068 @@
                                     <li class="list-group-item">Body-Parser: ^1.20.2</li>
                                     <li class="list-group-item">Method-Override: ^3.0.0</li>
                                     <li class="list-group-item">UUID: ^9.0.1</li>
-                                  </ul>
-                              </div>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                              <div class="ms-2 me-auto">
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
                                 <div class="fw-bold">Dev</div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">ESlint: ^8.56.0</li>
                                     <li class="list-group-item">Nodemon: ^3.0.3</li>
-                                  </ul>
-                              </div>
-                            </li>
-                          </ul>
-                        </p>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    </p>
                     <h4 id="item-4" class="docContentHeader">
                         <img src="img/popcorn.png" width="25" height="25" class="d-inline-block align-top"
                             title="Return to Top of List"
                             alt="Popcorj image that will take you to the top of the page" />API Endpoints
                     </h4>
-                    <p>...</p>
+                    <div class="endpointsList">
+                        <h5 id="retrieving-ids">Retrieving ID's</h5>
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/actors/[Name]/id</b></code>
+                                <code>(returns the actorID from the actor name)</code>
+                            </summary>
+    
+                            <h5 id="parameters">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The name of the actor</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding the actorID</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>400</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;The actor &quot; + actorName + &quot; was not found&quot;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/actors/[Name]/id
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/directors/[Name]/id</b></code>
+                                <code>(returns the directorID from the director name)</code>
+                            </summary>
+    
+                            <h5 id="parameters-1">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The name of the director</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-1">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding the directorID</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>400</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;The director &quot; + directorName + &quot; was not found&quot;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-1">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/directors/[Name]/id
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/movies/[Movie Title]/id</b></code>
+                                <code>(returns the movieID from the movie title)</code>
+                            </summary>
+    
+                            <h5 id="parameters-2">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Movie Title</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The title of the movie</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-2">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding the movieID</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>400</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;The movie &quot; + title + &quot; was not found&quot;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-2">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/movies/[title]/id
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/users/[Username]/id</b></code>
+                                <code>(returns the userID from the username)</code>
+                            </summary>
+    
+                            <h5 id="parameters-3">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Username</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The username of the user</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-3">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding the userID</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>400</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;The user &quot; + username + &quot; was not found&quot;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-3">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/id
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <hr>
+                        <h5 id="interacting-with-the-users">Interacting with the Users</h5>
+                        <details class="endpoints">
+                            <summary><code>POST</code> <code><b>/users</b></code>
+                                <code>(allows new users to register)</code>
+                            </summary>
+    
+                            <h5 id="parameters-4">Parameters</h5>
+                            <blockquote>
+                                <p>None</p>
+                            </blockquote>
+                            <h5 id="request-body">Request Body</h5>
+                            <blockquote>
+                                <p>A JSON object holding data about the user to add, structured like:</p>
+                                <pre><code class="language-json">{
+      &quot;username&quot;: &quot;eahowell&quot;,
+      &quot;password&quot;: &quot;Xyz123!&quot;,
+      &quot;firstName&quot;: &quot;Liz&quot;,
+      &quot;lastName&quot;: &quot;Howell&quot;,
+      &quot;email&quot;: &quot;eahowell@gmailx.com&quot;,
+      &quot;dateOfBirth&quot;: {
+        &quot;DOBmonth&quot;: 1,
+        &quot;DOBday&quot;: 1,
+        &quot;DOByear&quot;: 2000
+      },
+      &quot;lists&quot;: {
+        &quot;favorites&quot;: [&quot;Armageddon&quot;, &quot;Forrest Gump&quot;],
+        &quot;toWatch&quot;: [&quot;Hitch&quot;]
+      }
+    }
+    </code></pre>
+                            </blockquote>
+                            <h5 id="responses-4">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>400</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;Missing username in request body&quot;</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>201</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding data about the user that was added and including a
+                                                userID, structured like:</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <pre><code class="language-json">{
+      &quot;username&quot;: &quot;eahowell&quot;,
+      &quot;password&quot;: &quot;Xyz123!&quot;,
+      &quot;firstName&quot;: &quot;Liz&quot;,
+      &quot;lastName&quot;: &quot;Howell&quot;,
+      &quot;email&quot;: &quot;eahowell@gmailx.com&quot;,
+      &quot;dateOfBirth&quot;: {
+        &quot;DOBmonth&quot;: 1,
+        &quot;DOBday&quot;: 1,
+        &quot;DOByear&quot;: 2000
+      },
+      &quot;lists&quot;: {
+        &quot;favorites&quot;: [&quot;Armageddon&quot;, &quot;Forrest Gump&quot;],
+        &quot;toWatch&quot;: [&quot;Hitch&quot;]
+      },
+      &quot;userID&quot;: &quot;123&quot;
+    }
+    </code></pre>
+                            </blockquote>
+                            <h5 id="example-curl-4">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L POST &quot;Content-Type: application/json&quot; http://localhost:8080/users
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/users</b></code>
+                                <code>(returns a list of all the users)</code>
+                            </summary>
+    
+                            <h5 id="parameters-5">Parameters</h5>
+                            <blockquote>
+                                <p>None</p>
+                            </blockquote>
+                            <h5 id="responses-5">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding data about all of the users</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-5">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/users
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>PUT</code> <code><b>/users/[Username]</b></code>
+                                <code>(allows users to update their user info)</code>
+                            </summary>
+    
+                            <h5 id="parameters-6">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Username</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The username of the user</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="request-body-1">Request Body</h5>
+                            <blockquote>
+                                <p>A JSON object holding data about the user to add, structured like:</p>
+                                <pre><code class="language-json">{
+      &quot;username&quot;: &quot;eahowell&quot;,
+      &quot;password&quot;: &quot;Xyz123!&quot;,
+      &quot;firstName&quot;: &quot;Liz&quot;,
+      &quot;lastName&quot;: &quot;Howell&quot;,
+      &quot;email&quot;: &quot;eahowell@gmailx.com&quot;
+    }
+    </code></pre>
+                            </blockquote>
+                            <h5 id="responses-6">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>404</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;Username &quot; + username + &quot; was not found&quot;</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>201</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A test message indicating the user&#39;s data was updated</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-6">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L PUT &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+    
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/users/[Username]</b></code>
+                                <code>(returns the details of a specific user)</code>
+                            </summary>
+    
+                            <h5 id="parameters-7">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Username</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The username of the user</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-7">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding data about the specific user</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>404</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;Username &quot; + username + &quot; was not found&quot;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-7">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>DELETE</code> <code><b>/users/[Username]</b></code>
+                                <code>(allows an existing user to delete their account)</code>
+                            </summary>
+    
+                            <h5 id="parameters-8">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Username</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The username of the user</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-8">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>201</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A text message indicating the user was deregistered and removed as a user
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>404</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;Username &quot; + username + &quot; was not found&quot;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-8">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>PUT</code> <code><b>/users/[Username]/favorites/[Movie Title]</b></code>
+                                <code>(allows users to add a movie to their *Favorites* list)</code>
+                            </summary>
+    
+                            <h5 id="parameters-9">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Username</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The username of the user</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Movie Title</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The title of the movie</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-9">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>201</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A message indicating the movie was successfully added to the user&#39;s
+                                                Favorites list</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>404</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;Username &quot; + username + &quot; was not found&quot;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-9">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L PUT &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/favorities/[Movie Title]
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>PUT</code> <code><b>/users/[Username]/toWatch/[Movie Title]</b></code>
+                                <code>(allows users to add a movie to their *To Watch* list)</code>
+                            </summary>
+    
+                            <h5 id="parameters-10">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Username</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The username of the user</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Movie Title</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The title of the movie</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-10">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>201</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A message indicating the movie was successfully added to the user&#39;s To
+                                                Watch list</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>404</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;Username &quot; + username + &quot; was not found&quot;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-10">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L PUT &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/toWatch/[Movie Title]
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>DELETE</code> <code><b>/users/[Username]/favorites/[Movie Title]</b></code>
+                                <code>(allows users to remove a movie from their *Favorites* list)</code>
+                            </summary>
+    
+                            <h5 id="parameters-11">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Username</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The username of the user</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Movie Title</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The title of the movie</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-11">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>201</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A message indicating the movie was successfully removed from the user&#39;s
+                                                Favorites list</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>404</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;Username &quot; + username + &quot; was not found&quot;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-11">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L DELETE &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/favorities/[Movie Title]
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <hr>
+                        <h5 id="interacting-with-movies-and-directors">Interacting with Movies and Directors</h5>
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/movies</b></code>
+                                <code>(returns a list of all the movies)</code>
+                            </summary>
+    
+                            <h5 id="parameters-12">Parameters</h5>
+                            <blockquote>
+                                <p>None</p>
+                            </blockquote>
+                            <h5 id="responses-12">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding data about all of the movies</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="example-curl-12">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/movies
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/movies/[Title]</b></code>
+                                <code>(returns the data of a specific movie)</code>
+                            </summary>
+    
+                            <h5 id="parameters-13">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Title</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The title of the movie</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-13">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>400</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;The movie &quot; + title + &quot; was not found&quot;</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding data about a specific movie in this format:</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <pre><code class="language-json">{
+      &quot;movieID&quot;: 8,
+      &quot;Title&quot;: &quot;Hitch&quot;,
+      &quot;Year&quot;: &quot;2005&quot;,
+      &quot;Rated&quot;: &quot;PG-13&quot;,
+      &quot;Released&quot;: &quot;11 Feb 2005&quot;,
+      &quot;Runtime&quot;: &quot;118 min&quot;,
+      &quot;Genre&quot;: &quot;Comedy, Romance&quot;,
+      &quot;Director&quot;: &quot;Andy Tennant&quot;,
+      &quot;Writer&quot;: &quot;Kevin Bisch&quot;,
+      &quot;Actors&quot;: &quot;Will Smith, Eva Mendes, Kevin James, Amber Valletta&quot;,
+      &quot;Plot&quot;: &quot;While helping his latest client woo the woman of his dreams, a professional date-doctor finds that his game doesn&#39;t quite work on the gossip columnist with whom he&#39;s smitten.&quot;,
+      &quot;Language&quot;: &quot;English, Spanish&quot;,
+      &quot;Country&quot;: &quot;USA&quot;,
+      &quot;Awards&quot;: &quot;4 wins &amp; 24 nominations.&quot;,
+      &quot;imdbRating&quot;: &quot;6.6&quot;,
+      &quot;imdbVotes&quot;: &quot;301,857&quot;,
+      &quot;imdbID&quot;: &quot;tt0386588&quot;,
+      &quot;Type&quot;: &quot;movie&quot;,
+      &quot;DVD&quot;: &quot;28 Jun 2005&quot;,
+      &quot;BoxOffice&quot;: &quot;$179,495,555&quot;,
+      &quot;Production&quot;: &quot;Sony Pictures&quot;,
+      &quot;Website&quot;: &quot;N/A&quot;,
+      &quot;Response&quot;: &quot;True&quot;
+    }
+    </code></pre>
+                            </blockquote>
+                            <h5 id="example-curl-13">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/movies
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/directors/[Name]</b></code>
+                                <code>(returns the info of a specific director)</code>
+                            </summary>
+    
+                            <h5 id="parameters-14">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The name of the director</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-14">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>400</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;The director &quot; + directorName + &quot; was not found&quot;</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding data about the specific director.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <pre><code class="language-json">{
+      &quot;directorID&quot;: 1,
+      &quot;Name&quot;: &quot;Christopher Nolan&quot;,
+      &quot;Full Name&quot;: &quot;Christopher Edward Nolan&quot;,
+      &quot;Date of Birth&quot;: &quot;July 30, 1970&quot;,
+      &quot;Birthplace&quot;: &quot;London, England, UK&quot;,
+      &quot;Known For&quot;: [&quot;The Dark Knight Trilogy&quot;, &quot;Inception&quot;, &quot;Interstellar&quot;],
+      &quot;Awards&quot;: [
+        &quot;Academy Award nominations for Best Director and Best Picture for Inception and Dunkirk&quot;
+      ],
+      &quot;IMDb Profile&quot;: &quot;https://www.imdb.com/name/nm0634240/&quot;
+    }
+    </code></pre>
+                            </blockquote>
+                            <h5 id="example-curl-14">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/directors/[Name]
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/genres/[Genre]</b></code>
+                                <code>(returns the info of a specific genre)</code>
+                            </summary>
+    
+                            <h5 id="parameters-15">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Genre</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The name of the genre you want info on</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-15">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>400</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;The genre &quot; + genre + &quot; was not found&quot;</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding data about the specific genre.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <pre><code class="language-json">{
+      &quot;genreID&quot;: 6,
+      &quot;name&quot;: &quot;Thriller&quot;,
+      &quot;description&quot;: &quot;Movies characterized by intense excitement, suspense, and anticipation, often featuring plot twists and high stakes.&quot;,
+      &quot;example_movies&quot;: [&quot;The Silence of the Lambs&quot;, &quot;Inception&quot;, &quot;Se7en&quot;]
+    }
+    </code></pre>
+                            </blockquote>
+                            <h5 id="example-curl-15">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/genres/[Genre]
+    </code></pre>
+                            </blockquote>
+                        </details>
+    
+                        <details class="endpoints">
+                            <summary><code>GET</code> <code><b>/actors/[Name]/movies</b></code>
+                                <code>(returns the movies a specific actor starred in)</code>
+                            </summary>
+    
+                            <h5 id="parameters-16">Parameters</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Data Type</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Required</td>
+                                            <td>String</td>
+                                            <td>The name of the actor your want to see the movies they were in</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                            <h5 id="responses-16">Responses</h5>
+                            <blockquote>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>http code</th>
+                                            <th>content-type</th>
+                                            <th>response</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>400</code></td>
+                                            <td><code>text/plain;charset=UTF-8</code></td>
+                                            <td>&quot;The actor &quot; + namr + &quot; was not found&quot;</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>200</code></td>
+                                            <td><code>application/json</code></td>
+                                            <td>A JSON object holding the movies the actor has been in:</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <pre><code class="language-json">[
+      &quot;The Lord of the Rings: The Fellowship of the Ring&quot;,
+      &quot;Armageddon&quot;,
+      &quot;The Strangers&quot;
+    ]
+    </code></pre>
+                            </blockquote>
+                            <h5 id="example-curl-16">Example cURL</h5>
+                            <blockquote>
+                                <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/actors/[Name]/movies
+    </code></pre>
+                            </blockquote>
+                        </details>
+                    </div>
+    
+                   
 
                     <h4 id="item-5" class="docContentHeader">
                         <img src="img/popcorn.png" width="25" height="25" class="d-inline-block align-top"
@@ -167,7 +1212,6 @@
                             alt="Popcorj image that will take you to the top of the page" />Database
                     </h4>
                     <p>...</p>
-
                     <h4 id="item-7" class="docContentHeader">
                         <img src="img/popcorn.png" width="25" height="25" class="d-inline-block align-top"
                             title="Return to Top of List"
