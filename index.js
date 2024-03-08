@@ -692,6 +692,29 @@ app.delete("/users/:username/favorites/:movieTitle", (req, res) => {
   }
 });
 
+// DELETE - Allow users to remove a movie from their list of To Watch
+app.delete("/users/:username/toWatch/:movieTitle", (req, res) => {
+  const { username, movieTitle } = req.params;
+  let user = users.find((user) => user.username === username);
+
+  if (user) {
+    user.toWatch = user.toWatch.filter(
+      (title) => title !== movieTitle
+    );
+    res
+      .status(201)
+      .send(
+        "The movie " +
+          movieTitle +
+          " was removed from " +
+          username +
+          "'s To Watch List."
+      );
+  } else {
+    res.status(404).send("Username " + username + " was not found.");
+  }
+});
+
 // DELETE - Allow existing users to deregister
 app.delete("/users/:username", (req, res) => {
   const { username } = req.params;

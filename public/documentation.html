@@ -1128,6 +1128,80 @@
                 </blockquote>
               </details>
 
+              <details class="endpoints">
+                <summary>
+                  <code>DELETE</code>
+                  <code><b>/users/[Username]/toWatch/[Movie Title]</b></code>
+                  <code
+                    >(allows users to remove a movie from their *To Watch*
+                    list)</code
+                  >
+                </summary>
+
+                <h5 id="parameters-20">Parameters</h5>
+                <blockquote>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Data Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Username</td>
+                        <td>Required</td>
+                        <td>String</td>
+                        <td>The username of the user</td>
+                      </tr>
+                      <tr>
+                        <td>Movie Title</td>
+                        <td>Required</td>
+                        <td>String</td>
+                        <td>The title of the movie</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </blockquote>
+                <h5 id="responses-20">Responses</h5>
+                <blockquote>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>http code</th>
+                        <th>content-type</th>
+                        <th>response</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>201</code></td>
+                        <td><code>application/json</code></td>
+                        <td>
+                          A message indicating the movie was successfully
+                          removed from the user&#39;s To Watch list
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><code>404</code></td>
+                        <td><code>text/plain;charset=UTF-8</code></td>
+                        <td>
+                          &quot;Username &quot; + username + &quot; was not
+                          found&quot;
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </blockquote>
+                <h5 id="example-curl-20">Example cURL</h5>
+                <blockquote>
+                  <pre><code class="language-javascript"> curl -L DELETE &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/toWatch/[Movie Title]
+    </code></pre>
+                </blockquote>
+              </details>
+
               <hr />
               <h5 id="interacting-with-movies-and-directors">
                 Interacting with Movies and Directors

@@ -60,10 +60,10 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
         - [Parameters](#parameters-12)
         - [Responses](#responses-12)
         - [Example cURL](#example-curl-12)
-      - [Interacting with Movies and Directors](#interacting-with-movies-and-directors)
         - [Parameters](#parameters-13)
         - [Responses](#responses-13)
         - [Example cURL](#example-curl-13)
+      - [Interacting with Movies and Directors](#interacting-with-movies-and-directors)
         - [Parameters](#parameters-14)
         - [Responses](#responses-14)
         - [Example cURL](#example-curl-14)
@@ -82,6 +82,9 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
         - [Parameters](#parameters-19)
         - [Responses](#responses-19)
         - [Example cURL](#example-curl-19)
+        - [Parameters](#parameters-20)
+        - [Responses](#responses-20)
+        - [Example cURL](#example-curl-20)
   - [Authentication](#authentication)
   - [Database](#database)
   - [License](#license)
@@ -481,6 +484,31 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 
 > ```javascript
 >  curl -L DELETE "Content-Type: application/json" http://localhost:8080/users/[Username]/favorities/[Movie Title]
+> ```
+
+</details>
+
+<details>
+  <summary><code>DELETE</code> <code><b>/users/[Username]/toWatch/[Movie Title]</b></code> <code>(allows users to remove a movie from their *To Watch* list)</code></summary>
+
+##### Parameters
+
+> | Name        | Type     | Data Type | Description              |
+> | ----------- | -------- | --------- | ------------------------ |
+> | Username    | Required | String    | The username of the user |
+> | Movie Title | Required | String    | The title of the movie   |
+
+##### Responses
+
+> | http code | content-type               | response                                                                               |
+> | --------- | -------------------------- | -------------------------------------------------------------------------------------- |
+> | `201`     | `application/json`         | A message indicating the movie was successfully removed from the user's To Watch list |
+> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                              |
+
+##### Example cURL
+
+> ```javascript
+>  curl -L DELETE "Content-Type: application/json" http://localhost:8080/users/[Username]/toWatch/[Movie Title]
 > ```
 
 </details>
