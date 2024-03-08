@@ -653,7 +653,7 @@ app.put("/users/:username/favorites/:movieTitle", (req, res) => {
   let user = users.find((user) => user.username === username);
 
   if (user) {
-    user.lists.favorites=user.lists.favorites.concat([movieTitle]);
+    user.favoritemovies=user.favoritemovies.concat([movieTitle]);
 
     res
       .status(201)
@@ -675,7 +675,7 @@ app.delete("/users/:username/favorites/:movieTitle", (req, res) => {
   let user = users.find((user) => user.username === username);
 
   if (user) {
-    user.lists.favorites = user.lists.favorites.filter(
+    user.favoritemovies = user.favoritemovies.filter(
       (title) => title !== movieTitle
     );
     res
@@ -726,7 +726,7 @@ app.put("/users/:username/toWatch/:movieTitle", (req, res) => {
   let user = users.find((user) => user.username === username);
 
   if (user) {
-    user.lists.toWatch=user.lists.toWatch.concat([movieTitle]);
+    user.toWatch=user.toWatch.concat([movieTitle]);
     res
       .status(201)
       .send(
