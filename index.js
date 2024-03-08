@@ -738,6 +738,18 @@ app.put("/users/:username/toWatch/:movieTitle", (req, res) => {
   }
 });
 
+// READ - GET - Return genreID of Actor by name
+app.get("/genres/:genreName/id", (req, res) => {
+  const { genreName } = req.params;
+  let genreID = actors.find((genre) => genre.Name === genreName).genreID;
+
+  if (genreIDID) {
+    res.status(200).json(genreID);
+  } else {
+    res.status(400).send("The genre " + genreName + " was not found");
+  }
+});
+
 // READ - GET - Return actorID of Actor by name
 app.get("/actors/:actorName/id", (req, res) => {
   const { actorName } = req.params;

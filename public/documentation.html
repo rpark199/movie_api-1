@@ -328,6 +328,66 @@
     </code></pre>
                 </blockquote>
               </details>
+              <details class="endpoints">
+                <summary>
+                  <code>GET</code> <code><b>/genres/[Name]/id</b></code>
+                  <code>(returns the genreID from the genre name)</code>
+                </summary>
+
+                <h5 id="parameters">Parameters</h5>
+                <blockquote>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Data Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Name</td>
+                        <td>Required</td>
+                        <td>String</td>
+                        <td>The name of the genre</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </blockquote>
+                <h5 id="responses">Responses</h5>
+                <blockquote>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>http code</th>
+                        <th>content-type</th>
+                        <th>response</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>200</code></td>
+                        <td><code>application/json</code></td>
+                        <td>A JSON object holding the genreID</td>
+                      </tr>
+                      <tr>
+                        <td><code>400</code></td>
+                        <td><code>text/plain;charset=UTF-8</code></td>
+                        <td>
+                          &quot;The genre &quot; + genreName + &quot; was not
+                          found&quot;
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </blockquote>
+                <h5 id="example-curl">Example cURL</h5>
+                <blockquote>
+                  <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/genres/[Name]/id
+    </code></pre>
+                </blockquote>
+              </details>
 
               <details class="endpoints">
                 <summary>

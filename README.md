@@ -30,19 +30,19 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
         - [Parameters](#parameters-3)
         - [Responses](#responses-3)
         - [Example cURL](#example-curl-3)
-      - [Interacting with the Users](#interacting-with-the-users)
         - [Parameters](#parameters-4)
-        - [Request Body](#request-body)
         - [Responses](#responses-4)
         - [Example cURL](#example-curl-4)
+      - [Interacting with the Users](#interacting-with-the-users)
         - [Parameters](#parameters-5)
+        - [Request Body](#request-body)
         - [Responses](#responses-5)
         - [Example cURL](#example-curl-5)
         - [Parameters](#parameters-6)
-        - [Request Body](#request-body-1)
         - [Responses](#responses-6)
         - [Example cURL](#example-curl-6)
         - [Parameters](#parameters-7)
+        - [Request Body](#request-body-1)
         - [Responses](#responses-7)
         - [Example cURL](#example-curl-7)
         - [Parameters](#parameters-8)
@@ -57,10 +57,10 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
         - [Parameters](#parameters-11)
         - [Responses](#responses-11)
         - [Example cURL](#example-curl-11)
-      - [Interacting with Movies and Directors](#interacting-with-movies-and-directors)
         - [Parameters](#parameters-12)
         - [Responses](#responses-12)
         - [Example cURL](#example-curl-12)
+      - [Interacting with Movies and Directors](#interacting-with-movies-and-directors)
         - [Parameters](#parameters-13)
         - [Responses](#responses-13)
         - [Example cURL](#example-curl-13)
@@ -73,6 +73,9 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
         - [Parameters](#parameters-16)
         - [Responses](#responses-16)
         - [Example cURL](#example-curl-16)
+        - [Parameters](#parameters-17)
+        - [Responses](#responses-17)
+        - [Example cURL](#example-curl-17)
   - [Authentication](#authentication)
   - [Database](#database)
   - [License](#license)
@@ -104,6 +107,30 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 ---
 
 #### Retrieving ID's
+
+<details>
+ <summary><code>GET</code> <code><b>/genres/[Name]/id</b></code> <code>(returns the genreID from the genre name)</code></summary>
+
+##### Parameters
+
+> | Name | Type     | Data Type | Description           |
+> | ---- | -------- | --------- | --------------------- |
+> | Name | Required | String    | The name of the genre |
+
+##### Responses
+
+> | http code | content-type               | response                                    |
+> | --------- | -------------------------- | ------------------------------------------- |
+> | `200`     | `application/json`         | A JSON object holding the genreID           |
+> | `400`     | `text/plain;charset=UTF-8` | "The genre " + Name + " was not found" |
+
+##### Example cURL
+
+> ```javascript
+>  curl -L GET "Content-Type: application/json" http://localhost:8080/genres/[Name]/id
+> ```
+
+</details>
 
 <details>
  <summary><code>GET</code> <code><b>/actors/[Name]/id</b></code> <code>(returns the actorID from the actor name)</code></summary>
