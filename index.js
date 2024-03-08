@@ -717,6 +717,9 @@ app.get("/actors/:actorName/movies", (req, res) => {
   }
 });
 
+// READ - GET - Return a list of ALL directors to the user
+app.get("/directors", (req, res) => res.status(200).json(directors));
+
 // Update - PUT - Allow users to add movie to the “To Watch” list
 app.put("/users/:username/toWatch/:movieTitle", (req, res) => {
   const { username, movieTitle } = req.params;

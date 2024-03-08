@@ -334,7 +334,7 @@
                   <code>(returns the genreID from the genre name)</code>
                 </summary>
 
-                <h5 id="parameters">Parameters</h5>
+                <h5 id="parameters-17">Parameters</h5>
                 <blockquote>
                   <table>
                     <thead>
@@ -355,7 +355,7 @@
                     </tbody>
                   </table>
                 </blockquote>
-                <h5 id="responses">Responses</h5>
+                <h5 id="responses-17">Responses</h5>
                 <blockquote>
                   <table>
                     <thead>
@@ -382,7 +382,7 @@
                     </tbody>
                   </table>
                 </blockquote>
-                <h5 id="example-curl">Example cURL</h5>
+                <h5 id="example-curl-17">Example cURL</h5>
                 <blockquote>
                   <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/genres/[Name]/id
     </code></pre>
@@ -1259,7 +1259,70 @@
     </code></pre>
                 </blockquote>
               </details>
+              <details class="endpoints">
+                <summary>
+                  <code>GET</code> <code><b>/directors</b></code>
+                  <code>(returns a list of all the directors)</code>
+                </summary>
 
+                <h5 id="parameters-18">Parameters</h5>
+                <blockquote>
+                  <p>None</p>
+                </blockquote>
+                <h5 id="responses-18">Responses</h5>
+                <blockquote>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>http code</th>
+                        <th>content-type</th>
+                        <th>response</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>200</code></td>
+                        <td><code>application/json</code></td>
+                        <td>
+                          A JSON object holding data about all of the movies
+                        </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </blockquote>
+                <h5 id="responses-18">Responses</h5>
+                <blockquote>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>http code</th>
+                        <th>content-type</th>
+                        <th>response</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>200</code></td>
+                        <td><code>application/json</code></td>
+                        <td>A JSON object holding the genreID</td>
+                      </tr>
+                      <tr>
+                        <td><code>400</code></td>
+                        <td><code>text/plain;charset=UTF-8</code></td>
+                        <td>
+                          &quot;The genre &quot; + genreName + &quot; was not
+                          found&quot;
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </blockquote>
+                <h5 id="example-curl-18">Example cURL</h5>
+                <blockquote>
+                  <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/directors
+    </code></pre>
+                </blockquote>
+              </details>
               <details class="endpoints">
                 <summary>
                   <code>GET</code> <code><b>/directors/[Name]</b></code>

@@ -76,6 +76,9 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
         - [Parameters](#parameters-17)
         - [Responses](#responses-17)
         - [Example cURL](#example-curl-17)
+        - [Parameters](#parameters-18)
+        - [Responses](#responses-18)
+        - [Example cURL](#example-curl-18)
   - [Authentication](#authentication)
   - [Database](#database)
   - [License](#license)
@@ -555,7 +558,26 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > ```
 
 </details>
+<details>
+  <summary><code>GET</code> <code><b>/directors</b></code> <code>(returns a list of all the directors)</code></summary>
 
+##### Parameters
+
+> None
+
+##### Responses
+
+> | http code | content-type       | response                                          |
+> | --------- | ------------------ | ------------------------------------------------- |
+> | `200`     | `application/json` | A JSON object holding data about all of the directors |
+
+##### Example cURL
+
+> ```javascript
+>  curl -L GET "Content-Type: application/json" http://localhost:8080/directors
+> ```
+
+</details>
 <details>
   <summary><code>GET</code> <code><b>/directors/[Name]</b></code> <code>(returns the info of a specific director)</code></summary>
 
