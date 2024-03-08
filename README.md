@@ -101,6 +101,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 - Body-Parser: ^1.20.2
 - Method-Override: ^3.0.0
 - UUID: ^9.0.1
+- Mongoose: ^8.2.1
 
 #### Dev Depenencies
 
