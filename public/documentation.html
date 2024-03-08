@@ -1284,13 +1284,31 @@
                         <td><code>200</code></td>
                         <td><code>application/json</code></td>
                         <td>
-                          A JSON object holding data about all of the movies
+                          A JSON object holding data about all of the directors
                         </td>
                         </tr>
                     </tbody>
                   </table>
                 </blockquote>
-                <h5 id="responses-18">Responses</h5>
+                
+                <h5 id="example-curl-18">Example cURL</h5>
+                <blockquote>
+                  <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/directors
+    </code></pre>
+                </blockquote>
+              </details>
+
+              <details class="endpoints">
+                <summary>
+                  <code>GET</code> <code><b>/genres</b></code>
+                  <code>(returns a list of all the genres)</code>
+                </summary>
+
+                <h5 id="parameters-19">Parameters</h5>
+                <blockquote>
+                  <p>None</p>
+                </blockquote>
+                <h5 id="responses-19">Responses</h5>
                 <blockquote>
                   <table>
                     <thead>
@@ -1304,22 +1322,17 @@
                       <tr>
                         <td><code>200</code></td>
                         <td><code>application/json</code></td>
-                        <td>A JSON object holding the genreID</td>
-                      </tr>
-                      <tr>
-                        <td><code>400</code></td>
-                        <td><code>text/plain;charset=UTF-8</code></td>
                         <td>
-                          &quot;The genre &quot; + genreName + &quot; was not
-                          found&quot;
+                          A JSON object holding data about all of the genres
                         </td>
-                      </tr>
+                        </tr>
                     </tbody>
                   </table>
                 </blockquote>
-                <h5 id="example-curl-18">Example cURL</h5>
+                
+                <h5 id="example-curl-19">Example cURL</h5>
                 <blockquote>
-                  <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/directors
+                  <pre><code class="language-javascript"> curl -L GET &quot;Content-Type: application/json&quot; http://localhost:8080/genres
     </code></pre>
                 </blockquote>
               </details>

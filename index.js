@@ -741,10 +741,13 @@ app.put("/users/:username/toWatch/:movieTitle", (req, res) => {
   }
 });
 
-// READ - GET - Return genreID of Actor by name
+// READ - GET - Return a list of ALL genres to the user
+app.get("/genres", (req, res) => res.status(200).json(genres));
+
+// READ - GET - Return genreID of genre by name
 app.get("/genres/:genreName/id", (req, res) => {
   const { genreName } = req.params;
-  let genreID = actors.find((genre) => genre.Name === genreName).genreID;
+  let genreID = genres.find((genre) => genre.name === genreName).genreID;
 
   if (genreIDID) {
     res.status(200).json(genreID);

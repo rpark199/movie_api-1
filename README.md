@@ -79,6 +79,9 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
         - [Parameters](#parameters-18)
         - [Responses](#responses-18)
         - [Example cURL](#example-curl-18)
+        - [Parameters](#parameters-19)
+        - [Responses](#responses-19)
+        - [Example cURL](#example-curl-19)
   - [Authentication](#authentication)
   - [Database](#database)
   - [License](#license)
@@ -613,6 +616,27 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 
 > ```javascript
 >  curl -L GET "Content-Type: application/json" http://localhost:8080/directors/[Name]
+> ```
+
+</details>
+
+<details>
+  <summary><code>GET</code> <code><b>/genres</b></code> <code>(returns a list of all the genres)</code></summary>
+
+##### Parameters
+
+> None
+
+##### Responses
+
+> | http code | content-type       | response                                          |
+> | --------- | ------------------ | ------------------------------------------------- |
+> | `200`     | `application/json` | A JSON object holding data about all of the genres |
+
+##### Example cURL
+
+> ```javascript
+>  curl -L GET "Content-Type: application/json" http://localhost:8080/genres
 > ```
 
 </details>
