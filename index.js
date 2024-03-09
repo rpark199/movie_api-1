@@ -6,6 +6,15 @@ const express = require("express"),
   methodOverride = require("method-override"),
   uuid = require("uuid");
 const { title } = require("process");
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+const { Module } = require("module");
+
+const Movies = Models.Movie;
+const Users = Models.User;
+const Directors = Model.Director;
+const Genres = Model.Genre;
+const Actors = Model.Actor;
 
 const app = express();
 app.use(morgan("common"));
