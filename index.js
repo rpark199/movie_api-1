@@ -6,8 +6,8 @@ const express = require("express"),
   methodOverride = require("method-override"),
   uuid = require("uuid");
 const { title } = require("process");
-const mongoose = require('mongoose');
-const Models = require('./models.js');
+const mongoose = require("mongoose");
+const Models = require("./models.js");
 const { Module } = require("module");
 
 const Movies = Models.Movie;
@@ -16,7 +16,15 @@ const Directors = Model.Director;
 const Genres = Model.Genre;
 const Actors = Model.Actor;
 
+// Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API.
+mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("common"));
 // Create a write stream (in append mode) a ‘log.txt’ file is created in root directory
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
@@ -26,12 +34,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
 // Setup the logger
 app.use(morgan("combined", { stream: accessLogStream }));
 
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
-
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
@@ -603,17 +606,28 @@ app.get("/users/:username", (req, res) => {
 });
 
 // CREATE - POST - Allow new users to register;  (username, password, first name, last name, email, date of birth)
-app.post("/users", (req, res) => {
-  let newUser = req.body;
-
-  if (!newUser.username) {
-    const message = "Missing username in request body";
-    res.status(400).send(message);
-  } else {
-    newUser.userID = uuid.v4();
-    users.push(newUser);
-    res.status(201).send(newUser);
-  }
+app.post("/users", async (req, res) => {
+  await Users.findOne({ Username: req.body.Username})
+  .then((user) =>{
+    if (user) {
+      return res.status(400).send(req.body.Username + " already exists")
+    } else {
+      Users
+        .create({
+          Username: req.body.Username,
+          Password: req.body.Password,
+          Email: req.body.Email,
+          Birthday: req.body.Birthday,
+          FirstName: req.body.FirstName,
+          LastName: req.body.LastName
+        })
+          .then((user) => {res.status(201).json(user)})
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Error: ' + error);
+        })
+    }
+  })
 });
 
 // UPDATE - PUT - Allow users to update their user info (email, first name, last name, and password)
@@ -662,7 +676,7 @@ app.put("/users/:username/favorites/:movieTitle", (req, res) => {
   let user = users.find((user) => user.username === username);
 
   if (user) {
-    user.favoritemovies=user.favoritemovies.concat([movieTitle]);
+    user.favoritemovies = user.favoritemovies.concat([movieTitle]);
 
     res
       .status(201)
@@ -707,9 +721,7 @@ app.delete("/users/:username/toWatch/:movieTitle", (req, res) => {
   let user = users.find((user) => user.username === username);
 
   if (user) {
-    user.toWatch = user.toWatch.filter(
-      (title) => title !== movieTitle
-    );
+    user.toWatch = user.toWatch.filter((title) => title !== movieTitle);
     res
       .status(201)
       .send(
@@ -758,7 +770,7 @@ app.put("/users/:username/toWatch/:movieTitle", (req, res) => {
   let user = users.find((user) => user.username === username);
 
   if (user) {
-    user.toWatch=user.toWatch.concat([movieTitle]);
+    user.toWatch = user.toWatch.concat([movieTitle]);
     res
       .status(201)
       .send(
@@ -803,7 +815,9 @@ app.get("/actors/:actorName/id", (req, res) => {
 // READ - GET - Return directorID of Director by name
 app.get("/directors/:directorName/id", (req, res) => {
   const { directorName } = req.params;
-  let directorID = directors.find((director) => director.Name === directorName).directorID;
+  let directorID = directors.find(
+    (director) => director.Name === directorName
+  ).directorID;
   if (directorID) {
     res.status(200).json(directorID);
   } else {
@@ -827,7 +841,7 @@ app.get("/users/:username/id", (req, res) => {
 app.get("/movies/:title/id", (req, res) => {
   const { title } = req.params;
   const movieID = movies.find((movie) => movie.Title === title).movieID;
-  
+
   if (movieID) {
     res.status(200).json(movieID);
   } else {
