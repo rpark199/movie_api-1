@@ -553,9 +553,11 @@ let users = [
 // Pass through the static files stored in the public folder
 app.use(express.static("public"));
 
+// FIXME: 
 // READ - GET - Return a list of ALL movies to the user
 app.get("/movies", (req, res) => res.status(200).json(movies));
 
+// FIXME: 
 // READ - GET - Return data about a single movie by title to the user
 app.get("/movies/:title", (req, res) => {
   const { title } = req.params;
@@ -567,6 +569,7 @@ app.get("/movies/:title", (req, res) => {
   }
 });
 
+// FIXME: 
 // READ - GET - Return data about a genre (description) by name (e.g., “Thriller”)
 app.get("/genres/:genreName", (req, res) => {
   const { genreName } = req.params;
@@ -578,6 +581,7 @@ app.get("/genres/:genreName", (req, res) => {
   }
 });
 
+// FIXME: 
 // READ - GET - Return data about a director (bio, birth year, death year) by name
 app.get("/directors/:directorName", (req, res) => {
   const { directorName } = req.params;
@@ -589,9 +593,11 @@ app.get("/directors/:directorName", (req, res) => {
   }
 });
 
+// FIXME: 
 // READ - GET - Return a list of ALL users to the user
 app.get("/users", (req, res) => res.status(200).json(users));
 
+// FIXME: 
 // READ - GET - Return the details of a specific to the user
 app.get("/users/:username", (req, res) => {
   const { username } = req.params;
@@ -630,6 +636,7 @@ app.post("/users", async (req, res) => {
   })
 });
 
+// FIXME: 
 // UPDATE - PUT - Allow users to update their user info (email, first name, last name, and password)
 // Only those fields can be updated because we don't want username, userID, and DOB to be changed
 app.put("/users/:username", (req, res) => {
@@ -670,6 +677,7 @@ app.put("/users/:username", (req, res) => {
   }
 });
 
+// FIXME: 
 // UPDATE - PUT - Allow users to add a movie to their list of favorites
 app.put("/users/:username/favorites/:movieTitle", (req, res) => {
   const { username, movieTitle } = req.params;
@@ -692,6 +700,7 @@ app.put("/users/:username/favorites/:movieTitle", (req, res) => {
   }
 });
 
+// FIXME: 
 // DELETE - Allow users to remove a movie from their list of favorites
 app.delete("/users/:username/favorites/:movieTitle", (req, res) => {
   const { username, movieTitle } = req.params;
@@ -715,6 +724,7 @@ app.delete("/users/:username/favorites/:movieTitle", (req, res) => {
   }
 });
 
+// FIXME: 
 // DELETE - Allow users to remove a movie from their list of To Watch
 app.delete("/users/:username/toWatch/:movieTitle", (req, res) => {
   const { username, movieTitle } = req.params;
@@ -736,6 +746,7 @@ app.delete("/users/:username/toWatch/:movieTitle", (req, res) => {
   }
 });
 
+// FIXME: 
 // DELETE - Allow existing users to deregister
 app.delete("/users/:username", (req, res) => {
   const { username } = req.params;
@@ -749,6 +760,7 @@ app.delete("/users/:username", (req, res) => {
   }
 });
 
+// FIXME: 
 // READ - GET - Allow users to see which actors star in which movies
 app.get("/actors/:actorName/movies", (req, res) => {
   const { actorName } = req.params;
@@ -761,9 +773,11 @@ app.get("/actors/:actorName/movies", (req, res) => {
   }
 });
 
+// FIXME: 
 // READ - GET - Return a list of ALL directors to the user
 app.get("/directors", (req, res) => res.status(200).json(directors));
 
+// FIXME: 
 // Update - PUT - Allow users to add movie to the “To Watch” list
 app.put("/users/:username/toWatch/:movieTitle", (req, res) => {
   const { username, movieTitle } = req.params;
@@ -785,9 +799,11 @@ app.put("/users/:username/toWatch/:movieTitle", (req, res) => {
   }
 });
 
+// FIXME: 
 // READ - GET - Return a list of ALL genres to the user
 app.get("/genres", (req, res) => res.status(200).json(genres));
 
+// FIXME: 
 // READ - GET - Return genreID of genre by name
 app.get("/genres/:genreName/id", (req, res) => {
   const { genreName } = req.params;
@@ -800,6 +816,7 @@ app.get("/genres/:genreName/id", (req, res) => {
   }
 });
 
+// FIXME: 
 // READ - GET - Return actorID of Actor by name
 app.get("/actors/:actorName/id", (req, res) => {
   const { actorName } = req.params;
@@ -812,6 +829,7 @@ app.get("/actors/:actorName/id", (req, res) => {
   }
 });
 
+// FIXME: 
 // READ - GET - Return directorID of Director by name
 app.get("/directors/:directorName/id", (req, res) => {
   const { directorName } = req.params;
@@ -825,6 +843,7 @@ app.get("/directors/:directorName/id", (req, res) => {
   }
 });
 
+// FIXME: 
 // READ - GET - Return userID of User by username
 app.get("/users/:username/id", (req, res) => {
   const { username } = req.params;
@@ -837,6 +856,7 @@ app.get("/users/:username/id", (req, res) => {
   }
 });
 
+// FIXME: 
 // READ - GET - Return movieID of Movie by title
 app.get("/movies/:title/id", (req, res) => {
   const { title } = req.params;
