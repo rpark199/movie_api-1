@@ -133,6 +133,8 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | ------------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding the genreID           |
 > | `400`     | `text/plain;charset=UTF-8` | "The genre " + Name + " was not found" |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
+
 
 ##### Example cURL
 
@@ -157,6 +159,8 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | ------------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding the actorID           |
 > | `400`     | `text/plain;charset=UTF-8` | "The actor " + actorName + " was not found" |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
+
 
 ##### Example cURL
 
@@ -181,6 +185,8 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | ------------------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding the directorID              |
 > | `400`     | `text/plain;charset=UTF-8` | "The director " + directorName + " was not found" |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
+
 
 ##### Example cURL
 
@@ -205,6 +211,8 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | --------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding the movieID       |
 > | `400`     | `text/plain;charset=UTF-8` | "The movie " + title + " was not found" |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
+
 
 ##### Example cURL
 
@@ -229,6 +237,8 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | ----------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding the userID          |
 > | `400`     | `text/plain;charset=UTF-8` | "The user " + username + " was not found" |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
+
 
 ##### Example cURL
 
@@ -268,10 +278,8 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 
 ##### Responses
 
-> | http code | content-type               | response                                                                                          |
-> | --------- | -------------------------- | ------------------------------------------------------------------------------------------------- |
-> | `400`     | `text/plain;charset=UTF-8` | Username already exists                                                                           |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                                                          |
+> | http code | content-type               | response                                  |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 > | `201`     | `application/json`         | A JSON object holding data about the user that was added and including a userID, structured like: |
 >
 > ```json
@@ -308,6 +316,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | http code | content-type       | response                                          |
 > | --------- | ------------------ | ------------------------------------------------- |
 > | `200`     | `application/json` | A JSON object holding data about all of the users |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 
@@ -346,6 +355,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | ----------------------------------------------------- |
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"             |
 > | `201`     | `application/json`         | A test message indicating the user's data was updated |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 
@@ -370,6 +380,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | -------------------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding data about the specific user |
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"          |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 
@@ -394,6 +405,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | ------------------------------------------------------------------------- |
 > | `201`     | `application/json`         | A text message indicating the user was deregistered and removed as a user |
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                 |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 
@@ -419,6 +431,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | ---------------------------------------------------------------------------------- |
 > | `201`     | `application/json`         | A message indicating the movie was successfully added to the user's Favorites list |
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                          |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 
@@ -444,6 +457,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | --------------------------------------------------------------------------------- |
 > | `201`     | `application/json`         | A message indicating the movie was successfully added to the user's To Watch list |
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                         |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 
@@ -469,6 +483,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | -------------------------------------------------------------------------------------- |
 > | `201`     | `application/json`         | A message indicating the movie was successfully removed from the user's Favorites list |
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                              |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 
@@ -494,6 +509,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | --------- | -------------------------- | -------------------------------------------------------------------------------------- |
 > | `201`     | `application/json`         | A message indicating the movie was successfully removed from the user's To Watch list |
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                              |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 
@@ -669,15 +685,15 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 
 > | http code | content-type               | response                                             |
 > | --------- | -------------------------- | ---------------------------------------------------- |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                             |
 > | `400`     | `text/plain;charset=UTF-8` | "The genre " + genre + " was not found"              |
 > | `200`     | `application/json`         | A JSON object holding data about the specific genre. |
 >
 > ```json
 > {
->   "genreID": 6,
->   "name": "Thriller",
->   "description": "Movies characterized by intense excitement, suspense, and anticipation, often featuring plot twists and high stakes.",
->   "example_movies": ["The Silence of the Lambs", "Inception", "Se7en"]
+>   "_id": 6,
+>   "Name": "Thriller",
+>   "Description": "Movies characterized by intense excitement, suspense, and anticipation, often featuring plot twists and high stakes."
 > }
 > ```
 
