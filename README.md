@@ -255,14 +255,14 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 >
 > ```json
 >{ 
-    Username: { type: String, required: true },
-    Password: { type: String, required: true },
-    Email: { type: String, required: true },
-    Birthday: Date,
-    FirstName: { type: String, required: true },
-    LastName: { type: String, required: true },
-    FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
-    ToWatch: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }]
+>   "Username": { type: String, required: true },
+>   "Password": { type: String, required: true },
+>   "Email": { type: String, required: true },
+>   "Birthday": Date,
+>   "FirstName": { type: String, required: true },
+>   "LastName": { type: String, required: true },
+>   "FavoriteMovies": [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
+>   "ToWatch": [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }]
 > }
 > ```
 
@@ -276,21 +276,15 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 >
 > ```json
 > {
->   "username": "eahowell",
->   "password": "Xyz123!",
->   "firstName": "Liz",
->   "lastName": "Howell",
->   "email": "eahowell@gmailx.com",
->   "dateOfBirth": {
->     "DOBmonth": 1,
->     "DOBday": 1,
->     "DOByear": 2000
->   },
->   "lists": {
->     "favorites": ["Armageddon", "Forrest Gump"],
->     "toWatch": ["Hitch"]
->   },
->   "userID": "123"
+>   "Username": "String",
+>   "Password": "String",
+>   "Email": "String",
+>   "FirstName": "String",
+>   "LastName": "String",
+>   "Birthday": Date,
+>   "FavoriteMovies": [{ ObjectId }],
+>   "ToWatch": [{ ObjectId }], 
+>   "_id": Integer
 > }
 > ```
 
