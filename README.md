@@ -519,6 +519,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | http code | content-type       | response                                           |
 > | --------- | ------------------ | -------------------------------------------------- |
 > | `200`     | `application/json` | A JSON object holding data about all of the movies |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 

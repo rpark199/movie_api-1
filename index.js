@@ -553,10 +553,17 @@ let users = [
 // Pass through the static files stored in the public folder
 app.use(express.static("public"));
 
-// FIXME: 
 // READ - GET - Return a list of ALL movies to the user
-app.get("/movies", (req, res) => res.status(200).json(movies));
-
+app.get("/movies", async (req, res) => {
+  await Movies.find()
+    .then((movies) => {
+      res.status(200).json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 // FIXME: 
 // READ - GET - Return data about a single movie by title to the user
 app.get("/movies/:title", (req, res) => {
