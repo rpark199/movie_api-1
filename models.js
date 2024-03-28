@@ -14,8 +14,7 @@ let movieSchema = mongoose.Schema({
     TopMovies: String,
   },
   Actors: [String],
-  ImagePath: String,
-  Featured: Boolean
+  ImagePath: String
 });
 
 let userSchema = mongoose.Schema({

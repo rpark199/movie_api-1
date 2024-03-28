@@ -542,34 +542,30 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 
 > | http code | content-type               | response                                                          |
 > | --------- | -------------------------- | ----------------------------------------------------------------- |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
 > | `400`     | `text/plain;charset=UTF-8` | "The movie " + title + " was not found"                           |
 > | `200`     | `application/json`         | A JSON object holding data about a specific movie in this format: |
 >
 > ```json
 > {
->   "movieID": 8,
->   "Title": "Hitch",
->   "Year": "2005",
->   "Rated": "PG-13",
->   "Released": "11 Feb 2005",
->   "Runtime": "118 min",
->   "Genre": "Comedy, Romance",
->   "Director": "Andy Tennant",
->   "Writer": "Kevin Bisch",
->   "Actors": "Will Smith, Eva Mendes, Kevin James, Amber Valletta",
->   "Plot": "While helping his latest client woo the woman of his dreams, a professional date-doctor finds that his game doesn't quite work on the gossip columnist with whom he's smitten.",
->   "Language": "English, Spanish",
->   "Country": "USA",
->   "Awards": "4 wins & 24 nominations.",
->   "imdbRating": "6.6",
->   "imdbVotes": "301,857",
->   "imdbID": "tt0386588",
->   "Type": "movie",
->   "DVD": "28 Jun 2005",
->   "BoxOffice": "$179,495,555",
->   "Production": "Sony Pictures",
->   "Website": "N/A",
->   "Response": "True"
+>  "Genre": {
+>    "Description": "Movies intended to elicit emotional responses from the audience, often featuring intense character    development and interpersonal conflicts.",
+>    "Name": "Drama"
+>  },
+>  "Director": {
+>    "Bio": "Boaz Yakin is an American filmmaker, screenwriter, and director known for his work on Remember the Titans and Fresh.",
+>    "Birthday": "1966-06-20T05:00:00.000Z",
+>    "Name": "Boaz Yakin"
+>  },
+>  "_id": "65ea3766ecc7df78687ec88f",
+>  "Actors": [
+>    "Denzel Washington",
+>    "Will Patton",
+>    "Wood Harris"
+>  ],
+>  "Description": "A film based on the true story of a newly appointed African-American coach and his high school team on their first season as a racially integrated unit.",
+>  "ImagePath": "image_url_here",
+>  "Title": "Remember the Titans"
 > }
 > ```
 

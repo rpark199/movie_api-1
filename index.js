@@ -564,16 +564,21 @@ app.get("/movies", async (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
-// FIXME: 
+
 // READ - GET - Return data about a single movie by title to the user
-app.get("/movies/:title", (req, res) => {
-  const { title } = req.params;
-  const movie = movies.find((movie) => movie.Title === title);
-  if (movie) {
-    res.status(200).json(movie);
-  } else {
-    res.status(400).send("The movie " + title + " was not found");
-  }
+app.get("/movies/:title", async (req, res) => {
+  await Movies.findOne({ Title: req.params.title })
+    .then((movie) => {
+      if (!movie) {
+        res.status(400).send("The movie " + req.params.title + " was not found");
+    } else {
+        res.status(200).json(movie); 
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 // FIXME: 
