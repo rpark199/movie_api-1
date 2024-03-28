@@ -8,13 +8,13 @@ const express = require("express"),
 const { title } = require("process");
 const mongoose = require("mongoose");
 const Models = require("./models.js");
-const { Module } = require("module");
+const { Model } = require("module");
 
 const Movies = Models.Movie;
 const Users = Models.User;
-const Directors = Model.Director;
-const Genres = Model.Genre;
-const Actors = Model.Actor;
+const Directors = Models.Director;
+const Genres = Models.Genre;
+const Actors = Models.Actor;
 
 // Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API.
 mongoose.connect("mongodb://localhost:27017/myFlixDB", {
