@@ -581,16 +581,20 @@ app.get("/movies/:title", async (req, res) => {
     });
 });
 
-// FIXME: 
 // READ - GET - Return data about a genre (description) by name (e.g., “Thriller”)
-app.get("/genres/:genreName", (req, res) => {
-  const { genreName } = req.params;
-  const genre = genres.find((genre) => genre.name === genreName);
-  if (genre) {
-    res.status(200).json(genre);
-  } else {
-    res.status(400).send("The genre " + genre + " was not found");
-  }
+app.get("/genres/:genreName", async (req, res) => {
+  await Genres.findOne({ Name: req.params.genreName })
+    .then((genre) => {
+      if (genre) {
+        res.status(200).json(genre);
+      } else {
+        res.status(400).send("The genre " + req.params.genreName + " was not found");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
 // FIXME: 
