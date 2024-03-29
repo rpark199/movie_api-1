@@ -736,7 +736,7 @@
 
               <details class="endpoints">
                 <summary>
-                  <code>PUT</code> <code><b>/users/[Username]</b></code>
+                  <code>PUT</code> <code><b>/users</b></code>
                   <code>(allows users to update their user info)</code>
                 </summary>
 
@@ -806,8 +806,7 @@
                         <td><code>201</code></td>
                         <td>application/json</td>
                         <td>
-                          A test message indicating the user&#39;s data was
-                          updated
+                          A JSON object holding the updated user info
                         </td>
                       </tr>
                     </tbody>
@@ -815,7 +814,7 @@
                 </blockquote>
                 <h5 id="example-curl-6">Example cURL</h5>
                 <blockquote>
-                  <pre><code class="language-javascript"> curl -L PUT &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]
+                  <pre><code class="language-javascript"> curl -L PUT &quot;Content-Type: application/json&quot; http://localhost:8080/users
     </code></pre>
                 </blockquote>
               </details>

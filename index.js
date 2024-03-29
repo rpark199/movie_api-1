@@ -668,45 +668,29 @@ app.post("/users", async (req, res) => {
   });
 });
 
-// FIXME: 
 // UPDATE - PUT - Allow users to update their user info (email, first name, last name, and password)
 // Only those fields can be updated because we don't want username, userID, and DOB to be changed
-app.put("/users/:username", (req, res) => {
-  const { username } = req.params;
-  const updatedUser = req.body;
-  let user = users.find((user) => user.username === username);
-  let resMsg = "For User " + username + ":";
-
-  if (user) {
-    // Check to see if field is in the body, if so make update, then check next field
-    if (updatedUser.email) {
-      user.email = updatedUser.email;
-      resMsg =
-        resMsg + "The email was updated to " + updatedUser.email + " --- ";
-    }
-    if (updatedUser.firstName) {
-      resMsg =
-        resMsg +
-        "The first name was updated to " +
-        updatedUser.firstName +
-        ". --- ";
-    }
-    if (updatedUser.lastName) {
-      user.lastName = updatedUser.lastName;
-      resMsg =
-        resMsg +
-        "The last name was updated to " +
-        updatedUser.lastName +
-        ". --- ";
-    }
-    if (updatedUser.password) {
-      user.password = updatedUser.password;
-      resMsg = resMsg + "The password was updated.";
-    }
-    res.json(resMsg);
-  } else {
-    res.status(404).send("Username " + username + " was not found.");
+app.put("/users", async (req, res) => {
+await Users.findOneAndUpdate({ Username: req.body.username }, {$set:
+  {
+    Email: req.body.email,      
+    FirstName: req.body.firstName,
+    LastName: req.body.lastName, 
+    Password: req.body.password,
   }
+},
+{new: true}
+).then((updatedUser) => {
+  if (updatedUser) {
+    res.status(201).json(updatedUser);
+  } else {
+    res.status(404).send("Username " + req.body.username + " was not found.");
+  }
+})
+.catch((err) => {
+  console.error(err);
+  res.status(500).send("Error: " + err);
+})
 });
 
 // FIXME: 

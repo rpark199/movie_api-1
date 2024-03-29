@@ -326,13 +326,10 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 </details>
 
 <details>
-  <summary><code>PUT</code> <code><b>/users/[Username]</b></code> <code>(allows users to update their user info)</code></summary>
+  <summary><code>PUT</code> <code><b>/users</b></code> <code>(allows users to update their user info)</code></summary>
 
 ##### Parameters
-
-> | Name     | Type     | Data Type | Description              |
-> | -------- | -------- | --------- | ------------------------ |
-> | Username | Required | String    | The username of the user |
+> None
 
 ##### Request Body
 
@@ -353,13 +350,13 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | http code | content-type               | response                                              |
 > | --------- | -------------------------- | ----------------------------------------------------- |
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"             |
-> | `201`     | `application/json`         | A test message indicating the user's data was updated |
+> | `201`     | `application/json`         | A JSON object holding the updated user info           |
 > | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 
 > ```javascript
->  curl -L PUT "Content-Type: application/json" http://localhost:8080/users/[Username]
+>  curl -L PUT "Content-Type: application/json" http://localhost:8080/users
 > ```
 
 </details>
