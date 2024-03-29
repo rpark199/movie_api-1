@@ -561,7 +561,7 @@ app.get("/movies", async (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send('Error: ' + err);
+      res.status(500).send("Error: " + err);
     });
 });
 
@@ -570,14 +570,16 @@ app.get("/movies/:title", async (req, res) => {
   await Movies.findOne({ Title: req.params.title })
     .then((movie) => {
       if (!movie) {
-        res.status(400).send("The movie " + req.params.title + " was not found");
-    } else {
-        res.status(200).json(movie); 
+        res
+          .status(400)
+          .send("The movie " + req.params.title + " was not found");
+      } else {
+        res.status(200).json(movie);
       }
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send('Error: ' + err);
+      res.status(500).send("Error: " + err);
     });
 });
 
