@@ -615,9 +615,17 @@ app.get("/directors/:directorName", async (req, res) => {
   });
 });
 
-// FIXME: 
 // READ - GET - Return a list of ALL users to the user
-app.get("/users", (req, res) => res.status(200).json(users));
+app.get('/users', async (req, res) => {
+  await Users.find()
+    .then((users) => {
+      res.status(201).json(users);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
 // FIXME: 
 // READ - GET - Return the details of a specific to the user
