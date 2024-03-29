@@ -599,16 +599,20 @@ app.get("/genres/:genreName", async (req, res) => {
     });
 });
 
-// FIXME: 
 // READ - GET - Return data about a director (bio, birth year, death year) by name
-app.get("/directors/:directorName", (req, res) => {
-  const { directorName } = req.params;
-  const director = directors.find((director) => director.Name === directorName);
-  if (director) {
-    res.status(200).json(director);
-  } else {
-    res.status(400).send("The director " + directorName + " was not found");
-  }
+app.get("/directors/:directorName", async (req, res) => {
+  await Directors.findOne({ Name: req.params.directorName })
+  .then((director) => {
+    if (director) {
+      res.status(200).json(director);
+    } else {
+      res.status(400).send("The director " + req.params.directorName + " was not found");
+    }
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send("Error: " + err);
+  });
 });
 
 // FIXME: 

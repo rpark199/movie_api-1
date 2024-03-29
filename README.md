@@ -601,9 +601,10 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 
 ##### Responses
 
-> | http code | content-type       | response                                          |
-> | --------- | ------------------ | ------------------------------------------------- |
+> | http code | content-type       | response                                              |
+> | --------- | ------------------ | ----------------------------------------------------- |
 > | `200`     | `application/json` | A JSON object holding data about all of the directors |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                      |
 
 ##### Example cURL
 
@@ -625,21 +626,17 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 
 > | http code | content-type               | response                                                |
 > | --------- | -------------------------- | ------------------------------------------------------- |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                |
 > | `400`     | `text/plain;charset=UTF-8` | "The director " + directorName + " was not found"       |
 > | `200`     | `application/json`         | A JSON object holding data about the specific director. |
 >
 > ```json
 > {
->   "directorID": 1,
+>   "_id_": "65ea58f9c4e85e82e09e8fa3",
 >   "Name": "Christopher Nolan",
->   "Full Name": "Christopher Edward Nolan",
->   "Date of Birth": "July 30, 1970",
->   "Birthplace": "London, England, UK",
->   "Known For": ["The Dark Knight Trilogy", "Inception", "Interstellar"],
->   "Awards": [
->     "Academy Award nominations for Best Director and Best Picture for Inception and Dunkirk"
->   ],
->   "IMDb Profile": "https://www.imdb.com/name/nm0634240/"
+>   "Birthday": "1970-07-30T00:00:00.000Z",
+>   "Deathday": null,
+>   "Bio": "Christopher Edward Nolan is a British-American film director, producer, and screenwriter. He is known for his distinct filmmaking style, which often includes nonlinear narratives, complex plots, and philosophical themes. Nolan has directed several critically acclaimed and commercially successful films, including Inception, The Dark Knight Trilogy, and Interstellar.",
 > }
 > ```
 
@@ -663,6 +660,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 > | http code | content-type       | response                                          |
 > | --------- | ------------------ | ------------------------------------------------- |
 > | `200`     | `application/json` | A JSON object holding data about all of the genres |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                   |
 
 ##### Example cURL
 
@@ -718,6 +716,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 
 > | http code | content-type               | response                                                |
 > | --------- | -------------------------- | ------------------------------------------------------- |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                |
 > | `400`     | `text/plain;charset=UTF-8` | "The actor " + namr + " was not found"                  |
 > | `200`     | `application/json`         | A JSON object holding the movies the actor has been in: |
 >
