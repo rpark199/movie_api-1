@@ -270,9 +270,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 >   "Email": { type: String, required: true },
 >   "Birthday": Date,
 >   "FirstName": { type: String, required: true },
->   "LastName": { type: String, required: true },
->   "FavoriteMovies": [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
->   "ToWatch": [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }]
+>   "LastName": { type: String, required: true }
 > }
 > ```
 
@@ -280,6 +278,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 
 > | http code | content-type               | response                                  |
 > | `500`     | `text/plain;charset=UTF-8` | Description of the error |
+> | `404`     | `text/plain;charset=UTF-8` | username + " already exists"             |
 > | `201`     | `application/json`         | A JSON object holding data about the user that was added and including a userID, structured like: |
 >
 > ```json
@@ -292,7 +291,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 >   "Birthday": Date,
 >   "FavoriteMovies": [{ ObjectId }],
 >   "ToWatch": [{ ObjectId }], 
->   "_id": Integer
+>   "_id": "String"
 > }
 > ```
 

@@ -634,9 +634,7 @@
   Email: { type: String, required: true },
   Birthday: Date,
   FirstName: { type: String, required: true },
-  LastName: { type: String, required: true },
-  FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
-  ToWatch: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }]
+  LastName: { type: String, required: true }
 }
     </code></pre>
                 </blockquote>
@@ -678,9 +676,9 @@
   Birthday: Date,
   FirstName: String,
   LastName: String,
-  FavoriteMovies: [{ reference to a Movie }],
-  ToWatch: [{ reference to a Movie }],
-  _id: Integer
+  FavoriteMovies: [],
+  ToWatch: [],
+  _id: String
 }
                 </code></pre>
                 </blockquote>
