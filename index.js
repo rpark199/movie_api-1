@@ -627,18 +627,20 @@ app.get('/users', async (req, res) => {
     });
 });
 
-// FIXME: 
 // READ - GET - Return the details of a specific to the user
-app.get("/users/:username", (req, res) => {
-  const { username } = req.params;
-  const updatedUser = req.body;
-  let user = users.find((user) => user.username === username);
-
-  if (user) {
-    res.status(200).json(user);
-  } else {
-    res.status(404).send("Username " + username + " was not found.");
-  }
+app.get("/users/:username", async (req, res) => {
+  await Users.findOne({ Username: req.params.username })
+    .then((user) => {
+      if (user) {
+        res.status(200).json(user);
+      } else {
+        res.status(404).send("Username " + req.params.username + " was not found.");
+      }      
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
 // CREATE - POST - Allow new users to register;  (username, password, first name, last name, email, date of birth)
