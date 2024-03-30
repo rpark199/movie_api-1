@@ -1035,7 +1035,7 @@
                 </blockquote>
                 <h5 id="example-curl-9">Example cURL</h5>
                 <blockquote>
-                  <pre><code class="language-javascript"> curl -L PUT &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/favorities/[Movie Title]
+                  <pre><code class="language-javascript"> curl -L PUT &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/favorities/[MovieID]
     </code></pre>
                 </blockquote>
               </details>
@@ -1043,7 +1043,7 @@
               <details class="endpoints">
                 <summary>
                   <code>PUT</code>
-                  <code><b>/users/[Username]/toWatch/[Movie Title]</b></code>
+                  <code><b>/users/[Username]/toWatch/[MovieID]</b></code>
                   <code
                     >(allows users to add a movie to their *To Watch*
                     list)</code
@@ -1069,10 +1069,10 @@
                         <td>The username of the user</td>
                       </tr>
                       <tr>
-                        <td>Movie Title</td>
+                        <td>MovieID</td>
                         <td>Required</td>
                         <td>String</td>
-                        <td>The title of the movie</td>
+                        <td>The _id of the movie to add</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1099,8 +1099,7 @@
                         <td><code>201</code></td>
                         <td>application/json</td>
                         <td>
-                          A message indicating the movie was successfully added
-                          to the user&#39;s To Watch list
+                          A JSON object with data containing the updated user data
                         </td>
                       </tr>
                       <tr>
@@ -1116,7 +1115,7 @@
                 </blockquote>
                 <h5 id="example-curl-10">Example cURL</h5>
                 <blockquote>
-                  <pre><code class="language-javascript"> curl -L PUT &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/toWatch/[Movie Title]
+                  <pre><code class="language-javascript"> curl -L PUT &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/toWatch/[MovieID]
     </code></pre>
                 </blockquote>
               </details>
@@ -1124,7 +1123,7 @@
               <details class="endpoints">
                 <summary>
                   <code>DELETE</code>
-                  <code><b>/users/[Username]/favorites/[Movie Title]</b></code>
+                  <code><b>/users/[Username]/favorites/[MovieID]</b></code>
                   <code
                     >(allows users to remove a movie from their *Favorites*
                     list)</code
@@ -1150,10 +1149,10 @@
                         <td>The username of the user</td>
                       </tr>
                       <tr>
-                        <td>Movie Title</td>
+                        <td>MovieID</td>
                         <td>Required</td>
                         <td>String</td>
-                        <td>The title of the movie</td>
+                        <td>The _id of the movie to remove</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1180,8 +1179,7 @@
                         <td><code>201</code></td>
                         <td>application/json</td>
                         <td>
-                          A message indicating the movie was successfully
-                          removed from the user&#39;s Favorites list
+                          A JSON object with data containing the updated user data
                         </td>
                       </tr>
                       <tr>
@@ -1197,7 +1195,7 @@
                 </blockquote>
                 <h5 id="example-curl-11">Example cURL</h5>
                 <blockquote>
-                  <pre><code class="language-javascript"> curl -L DELETE &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/favorities/[Movie Title]
+                  <pre><code class="language-javascript"> curl -L DELETE &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/favorities/[MovieID]
     </code></pre>
                 </blockquote>
               </details>
@@ -1205,7 +1203,7 @@
               <details class="endpoints">
                 <summary>
                   <code>DELETE</code>
-                  <code><b>/users/[Username]/toWatch/[Movie Title]</b></code>
+                  <code><b>/users/[Username]/toWatch/[MovieID]</b></code>
                   <code
                     >(allows users to remove a movie from their *To Watch*
                     list)</code
@@ -1231,10 +1229,10 @@
                         <td>The username of the user</td>
                       </tr>
                       <tr>
-                        <td>Movie Title</td>
+                        <td>MovieID</td>
                         <td>Required</td>
                         <td>String</td>
-                        <td>The title of the movie</td>
+                        <td>The _id of the movie to remove</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1261,8 +1259,7 @@
                         <td><code>201</code></td>
                         <td>application/json</td>
                         <td>
-                          A message indicating the movie was successfully
-                          removed from the user&#39;s To Watch list
+                          A JSON object with data containing the updated user data
                         </td>
                       </tr>
                       <tr>
@@ -1278,7 +1275,7 @@
                 </blockquote>
                 <h5 id="example-curl-20">Example cURL</h5>
                 <blockquote>
-                  <pre><code class="language-javascript"> curl -L DELETE &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/toWatch/[Movie Title]
+                  <pre><code class="language-javascript"> curl -L DELETE &quot;Content-Type: application/json&quot; http://localhost:8080/users/[Username]/toWatch/[MovieID]
     </code></pre>
                 </blockquote>
               </details>

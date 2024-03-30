@@ -715,50 +715,70 @@ app.put("/users/:username/favorites/:MovieID", async (req, res) => {
     });
 });
 
-// FIXME: 
 // DELETE - Allow users to remove a movie from their list of favorites
-app.delete("/users/:username/favorites/:movieTitle", (req, res) => {
-  const { username, movieTitle } = req.params;
-  let user = users.find((user) => user.username === username);
-
-  if (user) {
-    user.favoritemovies = user.favoritemovies.filter(
-      (title) => title !== movieTitle
-    );
-    res
-      .status(201)
-      .send(
-        "The movie " +
-          movieTitle +
-          " was removed from " +
-          username +
-          "'s Favorites List."
-      );
-  } else {
-    res.status(404).send("Username " + username + " was not found.");
-  }
+app.delete("/users/:username/favorites/:MovieID", async (req, res) => {
+  await Users.findOneAndUpdate(
+    { Username: req.params.username },
+    {
+      $pull: { FavoriteMovies: req.params.MovieID },
+    },
+    { new: true }
+  )
+    .then((updatedUser) => {
+      if (updatedUser) {
+        res.status(201).json(updatedUser);
+      } else {
+        res.status(404).send("Username " + req.params.username + " was not found.");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
-// FIXME: 
-// DELETE - Allow users to remove a movie from their list of To Watch
-app.delete("/users/:username/toWatch/:movieTitle", (req, res) => {
-  const { username, movieTitle } = req.params;
-  let user = users.find((user) => user.username === username);
+// Update - PUT - Allow users to add movie to the “To Watch” list
+app.put("/users/:username/toWatch/:MovieID", async (req, res) => {
+  await Users.findOneAndUpdate(
+    { Username: req.params.username },
+    {
+      $addToSet: { ToWatch: req.params.MovieID },
+    },
+    { new: true }
+  )
+    .then((updatedUser) => {
+      if (updatedUser) {
+        res.status(201).json(updatedUser);
+      } else {
+        res.status(404).send("Username " + req.params.username + " was not found.");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
+});
 
-  if (user) {
-    user.toWatch = user.toWatch.filter((title) => title !== movieTitle);
-    res
-      .status(201)
-      .send(
-        "The movie " +
-          movieTitle +
-          " was removed from " +
-          username +
-          "'s To Watch List."
-      );
-  } else {
-    res.status(404).send("Username " + username + " was not found.");
-  }
+// DELETE - Allow users to remove a movie from their list of To Watch
+app.delete("/users/:username/toWatch/:MovieID", async (req, res) => {
+  await Users.findOneAndUpdate(
+    { Username: req.params.username },
+    {
+      $pull: { ToWatch: req.params.MovieID },
+    },
+    { new: true }
+  )
+    .then((updatedUser) => {
+      if (updatedUser) {
+        res.status(201).json(updatedUser);
+      } else {
+        res.status(404).send("Username " + req.params.username + " was not found.");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
 // FIXME: 
@@ -792,27 +812,6 @@ app.get("/actors/:actorName/movies", (req, res) => {
 // READ - GET - Return a list of ALL directors to the user
 app.get("/directors", (req, res) => res.status(200).json(directors));
 
-// FIXME: 
-// Update - PUT - Allow users to add movie to the “To Watch” list
-app.put("/users/:username/toWatch/:movieTitle", (req, res) => {
-  const { username, movieTitle } = req.params;
-  let user = users.find((user) => user.username === username);
-
-  if (user) {
-    user.toWatch = user.toWatch.concat([movieTitle]);
-    res
-      .status(201)
-      .send(
-        "The movie " +
-          movieTitle +
-          " was added to " +
-          username +
-          "'s To Watch List."
-      );
-  } else {
-    res.status(404).send("Username " + username + " was not found.");
-  }
-});
 
 // FIXME: 
 // READ - GET - Return a list of ALL genres to the user
