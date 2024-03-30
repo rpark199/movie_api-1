@@ -109,6 +109,10 @@ app.get("/directors/:directorName", passport.authenticate('jwt', { session: fals
 
 // READ - GET - Return a list of ALL users to the user
 app.get('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  // Verify username in the request body matches the one in the request parameter
+  if(req.user.Username !== req.params.username){
+    return res.status(400).send(`Permission denied`);
+  }
   await Users.find()
     .then((users) => {
       res.status(201).json(users);
@@ -121,6 +125,10 @@ app.get('/users', passport.authenticate('jwt', { session: false }), async (req, 
 
 // READ - GET - Return the details of a specific to the user
 app.get("/users/:username", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  // Verify username in the request body matches the one in the request parameter
+  if(req.user.Username !== req.params.username){
+    return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
+  }
   await Users.findOne({ Username: req.params.username })
     .then((user) => {
       if (user) {
@@ -162,13 +170,17 @@ app.post("/users", async (req, res) => {
 
 // UPDATE - PUT - Allow users to update their user info (email, first name, last name, and password)
 // Only those fields can be updated because we don't want username, userID, and DOB to be changed
-app.put("/users", passport.authenticate('jwt', { session: false }), async (req, res) => {
-await Users.findOneAndUpdate({ Username: req.body.username }, {$set:
+app.put("/users/:username", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  // Verify username in the request body matches the one in the request parameter
+  if(req.user.Username !== req.params.username){
+    return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
+  }
+  await Users.findOneAndUpdate({ Username: req.params.username }, {$set:
   {
-    Email: req.body.email,      
-    FirstName: req.body.firstName,
-    LastName: req.body.lastName, 
-    Password: req.body.password,
+    Email: req.body.Email,      
+    FirstName: req.body.FirstName,
+    LastName: req.body.LastName, 
+    Password: req.body.Password,
   }
 },
 {new: true}
@@ -176,7 +188,7 @@ await Users.findOneAndUpdate({ Username: req.body.username }, {$set:
   if (updatedUser) {
     res.status(201).json(updatedUser);
   } else {
-    res.status(404).send("Username " + req.body.username + " was not found.");
+    res.status(404).send("Username " + req.params.username + " was not found.");
   }
 })
 .catch((err) => {
@@ -187,6 +199,10 @@ await Users.findOneAndUpdate({ Username: req.body.username }, {$set:
 
 // UPDATE - PUT - Allow users to add a movie to their list of favorites
 app.put("/users/:username/favorites/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  // Verify username in the request body matches the one in the request parameter
+  if(req.user.Username !== req.params.username){
+    return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
+  }
   await Users.findOneAndUpdate(
     { Username: req.params.username },
     {
@@ -209,6 +225,10 @@ app.put("/users/:username/favorites/:MovieID", passport.authenticate('jwt', { se
 
 // DELETE - Allow users to remove a movie from their list of favorites
 app.delete("/users/:username/favorites/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  // Verify username in the request body matches the one in the request parameter
+  if(req.user.Username !== req.params.username){
+    return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
+  }
   await Users.findOneAndUpdate(
     { Username: req.params.username },
     {
@@ -231,6 +251,10 @@ app.delete("/users/:username/favorites/:MovieID", passport.authenticate('jwt', {
 
 // Update - PUT - Allow users to add movie to the “To Watch” list
 app.put("/users/:username/toWatch/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  // Verify username in the request body matches the one in the request parameter
+  if(req.user.Username !== req.params.username){
+    return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
+  }
   await Users.findOneAndUpdate(
     { Username: req.params.username },
     {
@@ -253,6 +277,10 @@ app.put("/users/:username/toWatch/:MovieID", passport.authenticate('jwt', { sess
 
 // DELETE - Allow users to remove a movie from their list of To Watch
 app.delete("/users/:username/toWatch/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  // Verify username in the request body matches the one in the request parameter
+  if(req.user.Username !== req.params.username){
+    return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
+  }
   await Users.findOneAndUpdate(
     { Username: req.params.username },
     {
@@ -274,13 +302,17 @@ app.delete("/users/:username/toWatch/:MovieID", passport.authenticate('jwt', { s
 });
 
 // DELETE - Allow existing users to deregister
-app.delete("/users/:Username", passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Users.findOneAndDelete({ Username: req.params.Username })
+app.delete("/users/:username", passport.authenticate('jwt', { session: false }), async (req, res) => {
+  // Verify username in the request body matches the one in the request parameter
+  if(req.user.Username !== req.params.username){
+    return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
+  }
+  await Users.findOneAndDelete({ Username: req.params.username })
     .then((user) => {
       if (!user) {
-        res.status(400).send(req.params.Username + " was not found");
+        res.status(400).send(req.params.username + " was not found");
       } else {
-        res.status(200).send(req.params.Username + " was deleted.");
+        res.status(200).send(req.params.username + " was deleted.");
       }
     })
     .catch((err) => {
@@ -400,5 +432,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(8080, () => {
-  console.log("Your app is listening on port 8080.");
+  console.log("Your app is listening on port 8080");
 });

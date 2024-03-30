@@ -5,7 +5,7 @@ const
     passportJWT =  require("passport-jwt");
 
 let
-    Users = Models.Users,
+    Users = Models.User,
     JWTStrategy = passportJWT.Strategy
     ExtractJWT = passportJWT.ExtractJwt;
 
@@ -45,7 +45,7 @@ passport.use(
             secretOrKey: "myFlixDB_462761_secret"
         },
         async (jwtPayload, callback) => {
-            return await Users.findByID(jwtPayload._id)
+            return await Users.findById(jwtPayload._id)
             .then((user) => {
                 return callback(null, user);
             })

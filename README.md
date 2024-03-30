@@ -248,8 +248,8 @@ Example cURL
 Responses
 
 > | http code | content-type               | response                                  |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
-> | `400`     | `text/plain;charset=UTF-8` | "Something is not right"            |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                    |
+> | `400`     | `text/plain;charset=UTF-8` | Text response "Something is not right"            |
 > | `200`     | `application/json`         | A JSON object holding data about the user and the JWT token |
 
 
@@ -284,10 +284,13 @@ Example cURL
 </details>
 
 <details>
-  <summary><code>PUT</code> <code><b>/users</b></code> <code>(allows users to update their user info)</code></summary>
+  <summary><code>PUT</code> <code><b>/users/[Username]</b></code> <code>(allows users to update their user info)</code></summary>
 
 Parameters
-> None
+
+> | Name     | Type     | Data Type | Description              |
+> | -------- | -------- | --------- | ------------------------ |
+> | Username | Required | String    | The username of the user |
 
 Request Body
 
@@ -295,11 +298,11 @@ Request Body
 >
 > ```json
 > {
->   "username": "eahowell",
->   "password": "Xyz123!",
->   "firstName": "Liz",
->   "lastName": "Howell",
->   "email": "eahowell@gmailx.com"
+>   "Username": "eahowell",
+>   "Password": "Xyz123!",
+>   "FirstName": "Liz",
+>   "LastName": "Howell",
+>   "Email": "eahowell@gmailx.com"
 > }
 > ```
 
@@ -314,7 +317,7 @@ Responses
 Example cURL
 
 > ```javascript
->  curl -L PUT "Content-Type: application/json" http://localhost:8080/users
+>  curl -L PUT "Content-Type: application/json" http://localhost:8080/users/[Username]
 > ```
 
 </details>
