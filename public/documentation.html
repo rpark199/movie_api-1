@@ -963,7 +963,7 @@
               <details class="endpoints">
                 <summary>
                   <code>PUT</code>
-                  <code><b>/users/[Username]/favorites/[Movie Title]</b></code>
+                  <code><b>/users/[Username]/favorites/[MovieID]</b></code>
                   <code
                     >(allows users to add a movie to their *Favorites*
                     list)</code
@@ -989,10 +989,10 @@
                         <td>The username of the user</td>
                       </tr>
                       <tr>
-                        <td>Movie Title</td>
+                        <td>MovieID</td>
                         <td>Required</td>
                         <td>String</td>
-                        <td>The title of the movie</td>
+                        <td>The _id of the movie to add</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1019,8 +1019,7 @@
                         <td><code>201</code></td>
                         <td>application/json</td>
                         <td>
-                          A message indicating the movie was successfully added
-                          to the user&#39;s Favorites list
+                          A JSON object holding data with the updated user data
                         </td>
                       </tr>
                       <tr>

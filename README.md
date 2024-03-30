@@ -412,27 +412,27 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 </details>
 
 <details>
-  <summary><code>PUT</code> <code><b>/users/[Username]/favorites/[Movie Title]</b></code> <code>(allows users to add a movie to their *Favorites* list)</code></summary>
+  <summary><code>PUT</code> <code><b>/users/[Username]/favorites/[MovieID]</b></code> <code>(allows users to add a movie to their *Favorites* list)</code></summary>
 
 ##### Parameters
 
 > | Name        | Type     | Data Type | Description              |
 > | ----------- | -------- | --------- | ------------------------ |
 > | Username    | Required | String    | The username of the user |
-> | Movie Title | Required | String    | The title of the movie   |
+> | MovieID     | Required | String    | The _id of the movie to add   |
 
 ##### Responses
 
 > | http code | content-type               | response                                                                           |
 > | --------- | -------------------------- | ---------------------------------------------------------------------------------- |
-> | `201`     | `application/json`         | A message indicating the movie was successfully added to the user's Favorites list |
+> | `201`     | `application/json`         | A JSON object holding the updated user data|
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                          |
 > | `500`     | `text/plain;charset=UTF-8` | Description of the error |
 
 ##### Example cURL
 
 > ```javascript
->  curl -L PUT "Content-Type: application/json" http://localhost:8080/users/[Username]/favorities/[Movie Title]
+>  curl -L PUT "Content-Type: application/json" http://localhost:8080/users/[Username]/favorities/[MovieID]
 > ```
 
 </details>

@@ -693,27 +693,26 @@ await Users.findOneAndUpdate({ Username: req.body.username }, {$set:
 })
 });
 
-// FIXME: 
 // UPDATE - PUT - Allow users to add a movie to their list of favorites
-app.put("/users/:username/favorites/:movieTitle", (req, res) => {
-  const { username, movieTitle } = req.params;
-  let user = users.find((user) => user.username === username);
-
-  if (user) {
-    user.favoritemovies = user.favoritemovies.concat([movieTitle]);
-
-    res
-      .status(201)
-      .send(
-        "The movie " +
-          movieTitle +
-          " was added to " +
-          username +
-          "'s Favorites List."
-      );
-  } else {
-    res.status(404).send("Username " + username + " was not found.");
-  }
+app.put("/users/:username/favorites/:MovieID", async (req, res) => {
+  await Users.findOneAndUpdate(
+    { Username: req.params.username },
+    {
+      $addToSet: { FavoriteMovies: req.params.MovieID },
+    },
+    { new: true }
+  )
+    .then((updatedUser) => {
+      if (updatedUser) {
+        res.status(201).json(updatedUser);
+      } else {
+        res.status(404).send("Username " + req.params.username + " was not found.");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
 // FIXME: 
