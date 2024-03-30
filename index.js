@@ -781,18 +781,20 @@ app.delete("/users/:username/toWatch/:MovieID", async (req, res) => {
     });
 });
 
-// FIXME: 
 // DELETE - Allow existing users to deregister
-app.delete("/users/:username", (req, res) => {
-  const { username } = req.params;
-  let user = users.find((user) => user.username === username);
-
-  if (user) {
-    users = users.filter((user) => user.username !== username);
-    res.status(201).send("User " + username + " was deleted.");
-  } else {
-    res.status(404).send("Username " + username + " was not found.");
-  }
+app.delete("/users/:Username", async (req, res) => {
+  await Users.findOneAndDelete({ Username: req.params.Username })
+    .then((user) => {
+      if (!user) {
+        res.status(400).send(req.params.Username + " was not found");
+      } else {
+        res.status(200).send(req.params.Username + " was deleted.");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
 // FIXME: 
