@@ -102,6 +102,10 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 - Method-Override: ^3.0.0
 - UUID: ^9.0.1
 - Mongoose: ^8.2.1
+- Passport: ^0.7.0
+- Passport-Local: ^1.0.0
+- Passport-JWT: ^4.0.1
+- JSONWebToken: ^9.0.2
 
 #### Dev Depenencies
 
