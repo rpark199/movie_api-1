@@ -695,6 +695,72 @@
 
               <details class="endpoints">
                 <summary>
+                  <code>POST</code> <code><b>/login</b></code>
+                  <code>(allows users to login)</code>
+                </summary>
+
+                <h5>Parameters</h5>
+                <blockquote>
+                  <p>None</p>
+                </blockquote>
+                <h5>Request Body</h5>
+                <blockquote>
+                  <p>
+                    A JSON object holding data about the user to add, structured
+                    like:
+                  </p>
+                  <pre><code class="language-json">{
+  Username: { type: String, required: true },
+  Password: { type: String, required: true },
+  Email: { type: String, required: true },
+  Birthday: Date,
+  FirstName: { type: String, required: true },
+  LastName: { type: String, required: true }
+}
+    </code></pre>
+                </blockquote>
+                <h5>Responses</h5>
+                <blockquote>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>http code</th>
+                        <th>content-type</th>
+                        <th>response</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>400</code></td>
+                        <td>text/plain;charset=UTF-8</td>
+                        <td>Username already exists</td>
+                      </tr>
+                      <tr>
+                        <td><code>500</code></td>
+                        <td>text/plain;charset=UTF-8</td>
+                        <td>Description of the error</td>
+                      </tr>
+                      <tr>
+                        <td><code>201</code></td>
+                        <td>application/json</td>
+                        <td>
+                          A JSON object holding data about the user that was
+                          added and including a userID, structured like:
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                </blockquote>
+                <h5 >Example cURL</h5>
+                <blockquote>
+                  <pre><code class="language-javascript"> curl -L POST &quot;Content-Type: application/json&quot; http://localhost:8080/login
+    </code></pre>
+                </blockquote>
+              </details>
+
+              <details class="endpoints">
+                <summary>
                   <code>GET</code> <code><b>/users</b></code>
                   <code>(returns a list of all the users)</code>
                 </summary>
