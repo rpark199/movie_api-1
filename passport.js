@@ -42,7 +42,7 @@ passport.use(
     new JWTStrategy(
         {
             jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-            secretOrKey: "your_jwt_secret"
+            secretOrKey: "myFlixDB_462761_secret"
         },
         async (jwtPayload, callback) => {
             return await Users.findByID(jwtPayload._id)

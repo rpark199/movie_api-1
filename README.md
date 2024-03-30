@@ -245,31 +245,12 @@ Example cURL
 <details>
   <summary><code>POST</code> <code><b>/login</b></code> <code>(allows users to login)</code></summary>
 
-Parameters
-
-> None
-
-Request Body
-
-> A JSON object holding data about the user to add, structured like:
->
-> ```json
->{ 
->   "Username": { type: String, required: true },
->   "Password": { type: String, required: true },
->   "Email": { type: String, required: true },
->   "Birthday": Date,
->   "FirstName": { type: String, required: true },
->   "LastName": { type: String, required: true }
-> }
-> ```
-
 Responses
 
 > | http code | content-type               | response                                  |
 > | `500`     | `text/plain;charset=UTF-8` | Description of the error |
-> | `404`     | `text/plain;charset=UTF-8` | username + " already exists"             |
-> | `201`     | `application/json`         | A JSON object holding data about the user that was added and including a userID, structured like: |
+> | `400`     | `text/plain;charset=UTF-8` | "Something is not right"            |
+> | `200`     | `application/json`         | A JSON object holding data about the user and the JWT token |
 
 
 Example cURL
