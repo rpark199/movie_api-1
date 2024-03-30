@@ -797,92 +797,110 @@ app.delete("/users/:Username", async (req, res) => {
     });
 });
 
-// FIXME: 
-// READ - GET - Allow users to see which actors star in which movies
-app.get("/actors/:actorName/movies", (req, res) => {
-  const { actorName } = req.params;
-  let actor = actors.find((actor) => actor.Name === actorName);
 
-  if (actor) {
-    res.status(200).json(actor.Movies);
-  } else {
-    res.status(400).send("The actor's " + actorName + " was not found");
-  }
-});
-
-// FIXME: 
 // READ - GET - Return a list of ALL directors to the user
-app.get("/directors", (req, res) => res.status(200).json(directors));
+app.get("/directors", async (req, res) => {
+await Directors.find()
+    .then((directors) => {
+      res.status(200).json(directors);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
 
-// FIXME: 
 // READ - GET - Return a list of ALL genres to the user
-app.get("/genres", (req, res) => res.status(200).json(genres));
+app.get("/genres", async (req, res) => {
+  await Genres.find()
+      .then((genres) => {
+        res.status(200).json(genres);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      });
+  });
 
-// FIXME: 
 // READ - GET - Return genreID of genre by name
-app.get("/genres/:genreName/id", (req, res) => {
-  const { genreName } = req.params;
-  let genreID = genres.find((genre) => genre.name === genreName).genreID;
-
-  if (genreIDID) {
-    res.status(200).json(genreID);
-  } else {
-    res.status(400).send("The genre " + genreName + " was not found");
-  }
+app.get("/genres/:genreName/id", async (req, res) => {
+  await Genres.findOne({ Name: req.params.genreName })
+    .then((genre) => {
+      if (genre) {
+        res.status(200).json(genre._id);
+      } else {
+        res.status(400).send("The genre " + req.params.genreName + " was not found");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
-// FIXME: 
 // READ - GET - Return actorID of Actor by name
-app.get("/actors/:actorName/id", (req, res) => {
-  const { actorName } = req.params;
-  let actorID = actors.find((actor) => actor.Name === actorName).actorID;
-
-  if (actorID) {
-    res.status(200).json(actorID);
-  } else {
-    res.status(400).send("The actor's " + actorName + " was not found");
-  }
+app.get("/actors/:actorName/id", async (req, res) => {
+  await Actors.findOne({ Name: req.params.actorName })
+    .then((actor) => {
+      if (actor) {
+        res.status(200).json(actor._id);
+      } else {
+        res.status(400).send("The actor " + req.params.actorName + " was not found");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
-// FIXME: 
 // READ - GET - Return directorID of Director by name
-app.get("/directors/:directorName/id", (req, res) => {
-  const { directorName } = req.params;
-  let directorID = directors.find(
-    (director) => director.Name === directorName
-  ).directorID;
-  if (directorID) {
-    res.status(200).json(directorID);
-  } else {
-    res.status(400).send("The director " + directorName + " was not found");
-  }
+app.get("/directors/:directorName/id", async (req, res) => {
+  await Directors.findOne({ Name: req.params.directorName })
+    .then((director) => {
+      if (director) {
+        res.status(200).json(director._id);
+      } else {
+        res.status(400).send("The director " + req.params.directorName + " was not found");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
-// FIXME: 
 // READ - GET - Return userID of User by username
-app.get("/users/:username/id", (req, res) => {
-  const { username } = req.params;
-  let userID = users.find((user) => user.username === username).userID;
-
-  if (userID) {
-    res.status(201).json(userID);
-  } else {
-    res.status(404).send("Username " + username + " was not found.");
-  }
+app.get("/users/:username/id", async (req, res) => {
+  await Users.findOne({ Username: req.params.username })
+    .then((user) => {
+      if (user) {
+        res.status(200).json(user._id);
+      } else {
+        res.status(400).send("Username " + req.params.username + " was not found.");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
-// FIXME: 
 // READ - GET - Return movieID of Movie by title
-app.get("/movies/:title/id", (req, res) => {
-  const { title } = req.params;
-  const movieID = movies.find((movie) => movie.Title === title).movieID;
-
-  if (movieID) {
-    res.status(200).json(movieID);
-  } else {
-    res.status(400).send("The movie " + title + " was not found");
-  }
+app.get("/movies/:title/id", async (req, res) => {
+  await Movies.findOne({ Title: req.params.title })
+    .then((movie) => {
+      if (movie) {
+        res.status(200).json(movie._id);
+      } else {
+        res.status(400).send("The movie " + req.params.title + " was not found");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
 });
 
 //   Error handler
