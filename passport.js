@@ -45,13 +45,14 @@ passport.use(
             secretOrKey: "myFlixDB_462761_secret"
         },
         async (jwtPayload, callback) => {
-            return await Users.findById(jwtPayload._id)
-            .then((user) => {
+            try {
+                const user = await Users.findById(jwtPayload._id);
+                if (!user) {
+                    return callback(null, false);
+                }
                 return callback(null, user);
-            })
-            .catch((error) => {
-                return callback(error)
-            });
-        }
-    )
+            } catch (error) {
+                return callback(error);
+            }
+        })
 );
