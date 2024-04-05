@@ -11,7 +11,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <!-- Favicon imprt -->
+    <!-- Favicon import -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -272,6 +272,7 @@
               />API Endpoints
             </h4>
             <div class="endpointsList">
+              <!-- MARK: Retrieving IDs -->
               <h5 id="retrieving-ids">Retrieving ID's</h5>
               <details class="endpoints">
                 <summary>
@@ -613,9 +614,11 @@
               </details>
 
               <hr />
+<!-- MARK: Interacting with Users -->
               <h5 id="interacting-with-the-users">
                 Interacting with the Users
               </h5>
+<!-- MARK: Resgister -->
               <details class="endpoints">
                 <summary>
                   <code>POST</code> <code><b>/users</b></code>
@@ -692,7 +695,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Login -->
               <details class="endpoints">
                 <summary>
                   <code>POST</code> <code><b>/login</b></code>
@@ -739,7 +742,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: All Users -->
               <details class="endpoints">
                 <summary>
                   <code>GET</code> <code><b>/users</b></code>
@@ -784,7 +787,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Update User Info -->
               <details class="endpoints">
                 <summary>
                   <code>PUT</code> <code><b>/users</b></code>
@@ -869,7 +872,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Return User Details -->
               <details class="endpoints">
                 <summary>
                   <code>GET</code> <code><b>/users/[Username]</b></code>
@@ -939,7 +942,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Delete User -->
               <details class="endpoints">
                 <summary>
                   <code>DELETE</code> <code><b>/users/[Username]</b></code>
@@ -1010,7 +1013,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Add to Favorites -->
               <details class="endpoints">
                 <summary>
                   <code>PUT</code>
@@ -1090,7 +1093,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Add to To Watch -->
               <details class="endpoints">
                 <summary>
                   <code>PUT</code>
@@ -1170,7 +1173,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Remove from Favorites -->
               <details class="endpoints">
                 <summary>
                   <code>DELETE</code>
@@ -1250,7 +1253,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Remove from To Watch-->
               <details class="endpoints">
                 <summary>
                   <code>DELETE</code>
@@ -1330,11 +1333,12 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Interacting with Movies and Directors-->
               <hr />
               <h5 id="interacting-with-movies-and-directors">
                 Interacting with Movies and Directors
               </h5>
+<!-- MARK: Return All Movies-->
               <details class="endpoints">
                 <summary>
                   <code>GET</code> <code><b>/movies</b></code>
@@ -1379,7 +1383,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Return Specific Movie -->
               <details class="endpoints">
                 <summary>
                   <code>GET</code> <code><b>/movies/[Title]</b></code>
@@ -1476,6 +1480,7 @@
     </code></pre>
                 </blockquote>
               </details>
+<!-- MARK: Return All Directors -->
               <details class="endpoints">
                 <summary>
                   <code>GET</code> <code><b>/directors</b></code>
@@ -1521,7 +1526,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Return All Genres -->
               <details class="endpoints">
                 <summary>
                   <code>GET</code> <code><b>/genres</b></code>
@@ -1567,6 +1572,7 @@
     </code></pre>
                 </blockquote>
               </details>
+<!-- MARK: Return Specific Director -->
               <details class="endpoints">
                 <summary>
                   <code>GET</code> <code><b>/directors/[Name]</b></code>
@@ -1645,7 +1651,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Return Specific Genre -->
               <details class="endpoints">
                 <summary>
                   <code>GET</code> <code><b>/genres/[Genre]</b></code>
@@ -1722,7 +1728,7 @@
     </code></pre>
                 </blockquote>
               </details>
-
+<!-- MARK: Return Movies of a Specific Actor -->
               <details class="endpoints">
                 <summary>
                   <code>GET</code> <code><b>/actors/[Name]/movies</b></code>
