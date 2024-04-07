@@ -41,6 +41,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 - Passport-Local: ^1.0.0
 - Passport-JWT: ^4.0.1
 - JSONWebToken: ^9.0.2
+- CORS: ^2.8.5
 
 #### Dev Depenencies
 
