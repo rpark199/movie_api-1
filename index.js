@@ -159,13 +159,14 @@ app.get("/users/:username", passport.authenticate("jwt", { session: false }), as
 
 // CREATE - POST - Allow new users to register;  (username, password, first name, last name, email, date of birth)
 app.post("/users", async (req, res) => {
+  let hashPassword = Users.hashPassword(req.body.Password);
   await Users.findOne({ Username: req.body.Username }).then((user) => {
     if (user) {
       return res.status(400).send(req.body.Username + " already exists");
     } else {
       Users.create({
         Username: req.body.Username,
-        Password: req.body.Password,
+        Password: hashPassword,
         Email: req.body.Email,
         Birthday: req.body.Birthday,
         FirstName: req.body.FirstName,
@@ -179,6 +180,10 @@ app.post("/users", async (req, res) => {
           res.status(500).send("Error: " + error);
         });
     }
+  })
+  .catch((error) => {
+    console.error(error);
+    res.status(500).send("Error: " + error);
   });
 });
 
