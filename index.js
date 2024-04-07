@@ -38,6 +38,20 @@ app.use(bodyParser.urlencoded({ extended: true })); // Ensures Express is availa
 app.use(bodyParser.json());
 app.use(methodOverride());
 
+const cors = require("cors");
+let allowedOrigins = ["http://localhost:8080", "http://testsite.com"];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
+      let message = "The CORS policy for this application doesn’t allow access from origin " + origin;
+      return callback(new Error(message ), false);
+    }
+    return callback(null, true);
+  }
+}));
+
 let auth = require("./auth")(app)
 const passport = require("passport");
 require("./passport") // Local passport file
@@ -46,7 +60,7 @@ require("./passport") // Local passport file
 app.use(express.static("public"));
 
 // READ - GET - Return a list of ALL movies to the user
-app.get("/movies", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/movies", passport.authenticate("jwt", { session: false }), async (req, res) => {
   await Movies.find()
     .then((movies) => {
       res.status(200).json(movies);
@@ -58,7 +72,7 @@ app.get("/movies", passport.authenticate('jwt', { session: false }), async (req,
 });
 
 // READ - GET - Return data about a single movie by title to the user
-app.get("/movies/:title", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/movies/:title", passport.authenticate("jwt", { session: false }), async (req, res) => {
   await Movies.findOne({ Title: req.params.title })
     .then((movie) => {
       if (!movie) {
@@ -76,7 +90,7 @@ app.get("/movies/:title", passport.authenticate('jwt', { session: false }), asyn
 });
 
 // READ - GET - Return data about a genre (description) by name (e.g., “Thriller”)
-app.get("/genres/:genreName", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/genres/:genreName", passport.authenticate("jwt", { session: false }), async (req, res) => {
   await Genres.findOne({ Name: req.params.genreName })
     .then((genre) => {
       if (genre) {
@@ -92,7 +106,7 @@ app.get("/genres/:genreName", passport.authenticate('jwt', { session: false }), 
 });
 
 // READ - GET - Return data about a director (bio, birth year, death year) by name
-app.get("/directors/:directorName", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/directors/:directorName", passport.authenticate("jwt", { session: false }), async (req, res) => {
   await Directors.findOne({ Name: req.params.directorName })
   .then((director) => {
     if (director) {
@@ -108,7 +122,7 @@ app.get("/directors/:directorName", passport.authenticate('jwt', { session: fals
 });
 
 // READ - GET - Return a list of ALL users to the user
-app.get('/users', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/users", passport.authenticate("jwt", { session: false }), async (req, res) => {
   // Verify username in the request body matches the one in the request parameter
   if(req.user.Username !== req.params.username){
     return res.status(400).send(`Permission denied`);
@@ -119,12 +133,12 @@ app.get('/users', passport.authenticate('jwt', { session: false }), async (req, 
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send('Error: ' + err);
+      res.status(500).send("Error: " + err);
     });
 });
 
 // READ - GET - Return the details of a specific to the user
-app.get("/users/:username", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/users/:username", passport.authenticate("jwt", { session: false }), async (req, res) => {
   // Verify username in the request body matches the one in the request parameter
   if(req.user.Username !== req.params.username){
     return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
@@ -170,7 +184,7 @@ app.post("/users", async (req, res) => {
 
 // UPDATE - PUT - Allow users to update their user info (email, first name, last name, and password)
 // Only those fields can be updated because we don't want username, userID, and DOB to be changed
-app.put("/users/:username", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.put("/users/:username", passport.authenticate("jwt", { session: false }), async (req, res) => {
   // Verify username in the request body matches the one in the request parameter
   if(req.user.Username !== req.params.username){
     return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
@@ -198,7 +212,7 @@ app.put("/users/:username", passport.authenticate('jwt', { session: false }), as
 });
 
 // UPDATE - PUT - Allow users to add a movie to their list of favorites
-app.put("/users/:username/favorites/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.put("/users/:username/favorites/:MovieID", passport.authenticate("jwt", { session: false }), async (req, res) => {
   // Verify username in the request body matches the one in the request parameter
   if(req.user.Username !== req.params.username){
     return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
@@ -224,7 +238,7 @@ app.put("/users/:username/favorites/:MovieID", passport.authenticate('jwt', { se
 });
 
 // DELETE - Allow users to remove a movie from their list of favorites
-app.delete("/users/:username/favorites/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.delete("/users/:username/favorites/:MovieID", passport.authenticate("jwt", { session: false }), async (req, res) => {
   // Verify username in the request body matches the one in the request parameter
   if(req.user.Username !== req.params.username){
     return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
@@ -250,7 +264,7 @@ app.delete("/users/:username/favorites/:MovieID", passport.authenticate('jwt', {
 });
 
 // Update - PUT - Allow users to add movie to the “To Watch” list
-app.put("/users/:username/toWatch/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.put("/users/:username/toWatch/:MovieID", passport.authenticate("jwt", { session: false }), async (req, res) => {
   // Verify username in the request body matches the one in the request parameter
   if(req.user.Username !== req.params.username){
     return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
@@ -276,7 +290,7 @@ app.put("/users/:username/toWatch/:MovieID", passport.authenticate('jwt', { sess
 });
 
 // DELETE - Allow users to remove a movie from their list of To Watch
-app.delete("/users/:username/toWatch/:MovieID", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.delete("/users/:username/toWatch/:MovieID", passport.authenticate("jwt", { session: false }), async (req, res) => {
   // Verify username in the request body matches the one in the request parameter
   if(req.user.Username !== req.params.username){
     return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
@@ -302,7 +316,7 @@ app.delete("/users/:username/toWatch/:MovieID", passport.authenticate('jwt', { s
 });
 
 // DELETE - Allow existing users to deregister
-app.delete("/users/:username", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.delete("/users/:username", passport.authenticate("jwt", { session: false }), async (req, res) => {
   // Verify username in the request body matches the one in the request parameter
   if(req.user.Username !== req.params.username){
     return res.status(400).send(`Permission denied ${req.user.Username} is not ${req.params.username}`);
@@ -322,31 +336,31 @@ app.delete("/users/:username", passport.authenticate('jwt', { session: false }),
 });
 
 // READ - GET - Return a list of ALL directors to the user
-app.get("/directors", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/directors", passport.authenticate("jwt", { session: false }), async (req, res) => {
 await Directors.find()
     .then((directors) => {
       res.status(200).json(directors);
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send('Error: ' + err);
+      res.status(500).send("Error: " + err);
     });
 });
 
 // READ - GET - Return a list of ALL genres to the user
-app.get("/genres", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/genres", passport.authenticate("jwt", { session: false }), async (req, res) => {
   await Genres.find()
       .then((genres) => {
         res.status(200).json(genres);
       })
       .catch((err) => {
         console.error(err);
-        res.status(500).send('Error: ' + err);
+        res.status(500).send("Error: " + err);
       });
   });
 
 // READ - GET - Return genreID of genre by name
-app.get("/genres/:genreName/id", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/genres/:genreName/id", passport.authenticate("jwt", { session: false }), async (req, res) => {
   await Genres.findOne({ Name: req.params.genreName })
     .then((genre) => {
       if (genre) {
@@ -362,7 +376,7 @@ app.get("/genres/:genreName/id", passport.authenticate('jwt', { session: false }
 });
 
 // READ - GET - Return actorID of Actor by name
-app.get("/actors/:actorName/id", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/actors/:actorName/id", passport.authenticate("jwt", { session: false }), async (req, res) => {
   await Actors.findOne({ Name: req.params.actorName })
     .then((actor) => {
       if (actor) {
@@ -378,7 +392,7 @@ app.get("/actors/:actorName/id", passport.authenticate('jwt', { session: false }
 });
 
 // READ - GET - Return directorID of Director by name
-app.get("/directors/:directorName/id", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/directors/:directorName/id", passport.authenticate("jwt", { session: false }), async (req, res) => {
   await Directors.findOne({ Name: req.params.directorName })
     .then((director) => {
       if (director) {
@@ -394,7 +408,7 @@ app.get("/directors/:directorName/id", passport.authenticate('jwt', { session: f
 });
 
 // READ - GET - Return userID of User by username
-app.get("/users/:username/id", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/users/:username/id", passport.authenticate("jwt", { session: false }), async (req, res) => {
   await Users.findOne({ Username: req.params.username })
     .then((user) => {
       if (user) {
@@ -410,7 +424,7 @@ app.get("/users/:username/id", passport.authenticate('jwt', { session: false }),
 });
 
 // READ - GET - Return movieID of Movie by title
-app.get("/movies/:title/id", passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get("/movies/:title/id", passport.authenticate("jwt", { session: false }), async (req, res) => {
   await Movies.findOne({ Title: req.params.title })
     .then((movie) => {
       if (movie) {
