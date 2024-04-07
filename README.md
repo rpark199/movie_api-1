@@ -34,6 +34,7 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 - Body-Parser: ^1.20.2
 - CORS: ^2.8.5
 - Express: ^4.18.2
+- Express-Validator: ^7.0.1
 - JSONWebToken: ^9.0.2
 - Lodash: ^4.17.21
 - Method-Override: ^3.0.0
@@ -43,7 +44,6 @@ Welcome to the myFlix API! Find the information for favorite movies (directors, 
 - Passport-JWT: ^4.0.1
 - Passport-Local: ^1.0.0
 - UUID: ^9.0.1
-
 
 #### Dev Depenencies
 
@@ -71,12 +71,11 @@ Parameters
 
 Responses
 
-> | http code | content-type               | response                                    |
-> | --------- | -------------------------- | ------------------------------------------- |
-> | `200`     | `application/json`         | A JSON object holding the genreID           |
+> | http code | content-type               | response                               |
+> | --------- | -------------------------- | -------------------------------------- |
+> | `200`     | `application/json`         | A JSON object holding the genreID      |
 > | `400`     | `text/plain;charset=UTF-8` | "The genre " + Name + " was not found" |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
-
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error               |
 
 Example cURL
 
@@ -101,8 +100,7 @@ Responses
 > | --------- | -------------------------- | ------------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding the actorID           |
 > | `400`     | `text/plain;charset=UTF-8` | "The actor " + actorName + " was not found" |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
-
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                    |
 
 Example cURL
 
@@ -127,8 +125,7 @@ Responses
 > | --------- | -------------------------- | ------------------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding the directorID              |
 > | `400`     | `text/plain;charset=UTF-8` | "The director " + directorName + " was not found" |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
-
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                          |
 
 Example cURL
 
@@ -153,8 +150,7 @@ Responses
 > | --------- | -------------------------- | --------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding the movieID       |
 > | `400`     | `text/plain;charset=UTF-8` | "The movie " + title + " was not found" |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
-
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                |
 
 Example cURL
 
@@ -179,8 +175,7 @@ Responses
 > | --------- | -------------------------- | ----------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding the userID          |
 > | `400`     | `text/plain;charset=UTF-8` | "The user " + username + " was not found" |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                          |
-
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                  |
 
 Example cURL
 
@@ -206,7 +201,7 @@ Request Body
 > A JSON object holding data about the user to add, structured like:
 >
 > ```json
->{ 
+> {
 >   "Username": { type: String, required: true },
 >   "Password": { type: String, required: true },
 >   "Email": { type: String, required: true },
@@ -218,10 +213,11 @@ Request Body
 
 Responses
 
-> | http code | content-type               | response                                  |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
-> | `404`     | `text/plain;charset=UTF-8` | username + " already exists"             |
-> | `201`     | `application/json`         | A JSON object holding data about the user that was added and including a userID, structured like: |
+> | http code | content-type | response |
+> | `500` | `text/plain;charset=UTF-8` | Description of the error |
+> | `422` | `application/json` | A JSON object holding an array of the validation erros |
+> | `404` | `text/plain;charset=UTF-8` | username + " already exists" |
+> | `201` | `application/json` | A JSON object holding data about the user that was added and including a userID, structured like: |
 >
 > ```json
 > {
@@ -232,7 +228,7 @@ Responses
 >   "LastName": "String",
 >   "Birthday": Date,
 >   "FavoriteMovies": [{ ObjectId }],
->   "ToWatch": [{ ObjectId }], 
+>   "ToWatch": [{ ObjectId }],
 >   "_id": "String"
 > }
 > ```
@@ -250,11 +246,10 @@ Example cURL
 
 Responses
 
-> | http code | content-type               | response                                  |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                    |
-> | `400`     | `text/plain;charset=UTF-8` | Text response "Something is not right"            |
-> | `200`     | `application/json`         | A JSON object holding data about the user and the JWT token |
-
+> | http code | content-type | response |
+> | `500` | `text/plain;charset=UTF-8` | Description of the error |
+> | `400` | `text/plain;charset=UTF-8` | Text response "Something is not right" |
+> | `200` | `application/json` | A JSON object holding data about the user and the JWT token |
 
 Example cURL
 
@@ -273,10 +268,10 @@ Parameters
 
 Responses
 
-> | http code | content-type       | response                                          |
-> | --------- | ------------------ | ------------------------------------------------- |
-> | `200`     | `application/json` | A JSON object holding data about all of the users |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
+> | http code | content-type               | response                                          |
+> | --------- | -------------------------- | ------------------------------------------------- |
+> | `200`     | `application/json`         | A JSON object holding data about all of the users |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                          |
 
 Example cURL
 
@@ -311,11 +306,11 @@ Request Body
 
 Responses
 
-> | http code | content-type               | response                                              |
-> | --------- | -------------------------- | ----------------------------------------------------- |
-> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"             |
-> | `201`     | `application/json`         | A JSON object holding the updated user info           |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
+> | http code | content-type               | response                                    |
+> | --------- | -------------------------- | ------------------------------------------- |
+> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"   |
+> | `201`     | `application/json`         | A JSON object holding the updated user info |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                    |
 
 Example cURL
 
@@ -340,7 +335,7 @@ Responses
 > | --------- | -------------------------- | -------------------------------------------------- |
 > | `200`     | `application/json`         | A JSON object holding data about the specific user |
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"          |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                           |
 
 Example cURL
 
@@ -365,7 +360,7 @@ Responses
 > | --------- | -------------------------- | ------------------------------------------------------------------------- |
 > | `201`     | `application/json`         | A text message indicating the user was deregistered and removed as a user |
 > | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                 |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                                                  |
 
 Example cURL
 
@@ -380,18 +375,18 @@ Example cURL
 
 Parameters
 
-> | Name        | Type     | Data Type | Description              |
-> | ----------- | -------- | --------- | ------------------------ |
-> | Username    | Required | String    | The username of the user |
-> | MovieID     | Required | String    | The _id of the movie to add   |
+> | Name     | Type     | Data Type | Description                  |
+> | -------- | -------- | --------- | ---------------------------- |
+> | Username | Required | String    | The username of the user     |
+> | MovieID  | Required | String    | The \_id of the movie to add |
 
 Responses
 
-> | http code | content-type               | response                                                                           |
-> | --------- | -------------------------- | ---------------------------------------------------------------------------------- |
-> | `201`     | `application/json`         | A JSON object holding the updated user data|
-> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                          |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
+> | http code | content-type               | response                                    |
+> | --------- | -------------------------- | ------------------------------------------- |
+> | `201`     | `application/json`         | A JSON object holding the updated user data |
+> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"   |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                    |
 
 Example cURL
 
@@ -406,18 +401,18 @@ Example cURL
 
 Parameters
 
-> | Name        | Type     | Data Type | Description              |
-> | ----------- | -------- | --------- | ------------------------ |
-> | Username    | Required | String    | The username of the user |
-> | MovieID | Required | String    | The _id of the movie to add   |
+> | Name     | Type     | Data Type | Description                  |
+> | -------- | -------- | --------- | ---------------------------- |
+> | Username | Required | String    | The username of the user     |
+> | MovieID  | Required | String    | The \_id of the movie to add |
 
 Responses
 
-> | http code | content-type               | response                                                                          |
-> | --------- | -------------------------- | --------------------------------------------------------------------------------- |
-> | `201`     | `application/json`         |  A JSON object holding the updated user data |
-> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                         |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
+> | http code | content-type               | response                                    |
+> | --------- | -------------------------- | ------------------------------------------- |
+> | `201`     | `application/json`         | A JSON object holding the updated user data |
+> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"   |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                    |
 
 Example cURL
 
@@ -432,18 +427,18 @@ Example cURL
 
 Parameters
 
-> | Name        | Type     | Data Type | Description              |
-> | ----------- | -------- | --------- | ------------------------ |
-> | Username    | Required | String    | The username of the user |
-> | MovieID | Required | String    | The _id of the movie to remove   |
+> | Name     | Type     | Data Type | Description                     |
+> | -------- | -------- | --------- | ------------------------------- |
+> | Username | Required | String    | The username of the user        |
+> | MovieID  | Required | String    | The \_id of the movie to remove |
 
 Responses
 
-> | http code | content-type               | response                                                                               |
-> | --------- | -------------------------- | -------------------------------------------------------------------------------------- |
+> | http code | content-type               | response                                    |
+> | --------- | -------------------------- | ------------------------------------------- |
 > | `201`     | `application/json`         | A JSON object holding the updated user data |
-> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                              |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
+> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"   |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                    |
 
 Example cURL
 
@@ -458,18 +453,18 @@ Example cURL
 
 Parameters
 
-> | Name        | Type     | Data Type | Description              |
-> | ----------- | -------- | --------- | ------------------------ |
-> | Username    | Required | String    | The username of the user |
-> | MovieID | Required | String    | The _id of the movie to remove   |
+> | Name     | Type     | Data Type | Description                     |
+> | -------- | -------- | --------- | ------------------------------- |
+> | Username | Required | String    | The username of the user        |
+> | MovieID  | Required | String    | The \_id of the movie to remove |
 
 Responses
 
-> | http code | content-type               | response                                                                               |
-> | --------- | -------------------------- | -------------------------------------------------------------------------------------- |
+> | http code | content-type               | response                                    |
+> | --------- | -------------------------- | ------------------------------------------- |
 > | `201`     | `application/json`         | A JSON object holding the updated user data |
-> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"                                              |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
+> | `404`     | `text/plain;charset=UTF-8` | "Username " + username + " was not found"   |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                    |
 
 Example cURL
 
@@ -492,10 +487,10 @@ Parameters
 
 Responses
 
-> | http code | content-type       | response                                           |
-> | --------- | ------------------ | -------------------------------------------------- |
-> | `200`     | `application/json` | A JSON object holding data about all of the movies |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error |
+> | http code | content-type               | response                                           |
+> | --------- | -------------------------- | -------------------------------------------------- |
+> | `200`     | `application/json`         | A JSON object holding data about all of the movies |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                           |
 
 Example cURL
 
@@ -524,24 +519,20 @@ Responses
 >
 > ```json
 > {
->  "Genre": {
->    "Description": "Movies intended to elicit emotional responses from the audience, often featuring intense character    development and interpersonal conflicts.",
->    "Name": "Drama"
->  },
->  "Director": {
->    "Bio": "Boaz Yakin is an American filmmaker, screenwriter, and director known for his work on Remember the Titans and Fresh.",
->    "Birthday": "1966-06-20T05:00:00.000Z",
->    "Name": "Boaz Yakin"
->  },
->  "_id": "65ea3766ecc7df78687ec88f",
->  "Actors": [
->    "Denzel Washington",
->    "Will Patton",
->    "Wood Harris"
->  ],
->  "Description": "A film based on the true story of a newly appointed African-American coach and his high school team on their first season as a racially integrated unit.",
->  "ImagePath": "image_url_here",
->  "Title": "Remember the Titans"
+>   "Genre": {
+>     "Description": "Movies intended to elicit emotional responses from the audience, often featuring intense character    development and interpersonal conflicts.",
+>     "Name": "Drama"
+>   },
+>   "Director": {
+>     "Bio": "Boaz Yakin is an American filmmaker, screenwriter, and director known for his work on Remember the Titans and Fresh.",
+>     "Birthday": "1966-06-20T05:00:00.000Z",
+>     "Name": "Boaz Yakin"
+>   },
+>   "_id": "65ea3766ecc7df78687ec88f",
+>   "Actors": ["Denzel Washington", "Will Patton", "Wood Harris"],
+>   "Description": "A film based on the true story of a newly appointed African-American coach and his high school team on their first season as a racially integrated unit.",
+>   "ImagePath": "image_url_here",
+>   "Title": "Remember the Titans"
 > }
 > ```
 
@@ -561,10 +552,10 @@ Parameters
 
 Responses
 
-> | http code | content-type       | response                                              |
-> | --------- | ------------------ | ----------------------------------------------------- |
-> | `200`     | `application/json` | A JSON object holding data about all of the directors |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error                      |
+> | http code | content-type               | response                                              |
+> | --------- | -------------------------- | ----------------------------------------------------- |
+> | `200`     | `application/json`         | A JSON object holding data about all of the directors |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                              |
 
 Example cURL
 
@@ -596,7 +587,7 @@ Responses
 >   "Name": "Christopher Nolan",
 >   "Birthday": "1970-07-30T00:00:00.000Z",
 >   "Deathday": null,
->   "Bio": "Christopher Edward Nolan is a British-American film director, producer, and screenwriter. He is known for his distinct filmmaking style, which often includes nonlinear narratives, complex plots, and philosophical themes. Nolan has directed several critically acclaimed and commercially successful films, including Inception, The Dark Knight Trilogy, and Interstellar.",
+>   "Bio": "Christopher Edward Nolan is a British-American film director, producer, and screenwriter. He is known for his distinct filmmaking style, which often includes nonlinear narratives, complex plots, and philosophical themes. Nolan has directed several critically acclaimed and commercially successful films, including Inception, The Dark Knight Trilogy, and Interstellar."
 > }
 > ```
 
@@ -617,10 +608,10 @@ Parameters
 
 Responses
 
-> | http code | content-type       | response                                          |
-> | --------- | ------------------ | ------------------------------------------------- |
-> | `200`     | `application/json` | A JSON object holding data about all of the genres |
-> | `500`     | `text/plain;charset=UTF-8` | Description of the error                   |
+> | http code | content-type               | response                                           |
+> | --------- | -------------------------- | -------------------------------------------------- |
+> | `200`     | `application/json`         | A JSON object holding data about all of the genres |
+> | `500`     | `text/plain;charset=UTF-8` | Description of the error                           |
 
 Example cURL
 
