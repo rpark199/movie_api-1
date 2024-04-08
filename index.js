@@ -69,6 +69,23 @@ const { check, validationResult } = require("express-validator");
 // Pass through the static files stored in the public folder
 app.use(express.static("public"));
 
+// READ - GET - 
+app.get(
+  "/",
+  passport.authenticate("jwt", { session: false }, err, user),
+  (req, res) => {
+    // Verify username in the request body matches the one in the request parameter
+    if (err) { 
+      console.error(err);
+      res.status(500).send("Error: " + err); }
+    if (!user){
+      return "Please log in or register"
+    } else {
+      return "Welcome to the myFlix API, thanks for being a registered user!"
+    };
+  }
+);
+
 // READ - GET - Return a list of ALL movies to the user
 app.get(
   "/movies",
