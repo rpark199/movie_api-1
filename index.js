@@ -158,9 +158,9 @@ app.get(
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     // Verify username in the request body matches the one in the request parameter
-    if (req.user.Username !== req.params.username) {
-      return res.status(400).send(`Permission denied`);
-    }
+    // if (req.user.Username !== req.params.username) {
+    //   return res.status(400).send(`Permission denied`);
+    // }
     await Users.find()
       .then((users) => {
         res.status(201).json(users);
