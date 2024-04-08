@@ -17,7 +17,11 @@ const Genres = Models.Genre;
 const Actors = Models.Actor;
 
 // Mongoose to connect to that database so it can perform CRUD operations on the documents it contains from within your REST API.
-mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+// mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
