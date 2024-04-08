@@ -73,16 +73,23 @@ app.use(express.static("public"));
 app.get(
   "/",
   (req, res) => {
-    passport.authenticate("jwt", { session: false }, err, user)
-    // Verify username in the request body matches the one in the request parameter
+    passport.authenticate("jwt", { session: false }, err, user);
+    (function showModal(err, user){
+      let modalBody = $(".modal-body");
+    // Clear existing modal content
+    modalBody.empty();
     if (err) { 
       console.error(err);
       res.status(500).send("Error: " + err); }
     if (!req.user){
-      return "Please log in or register"
+      // Message Element
+        let messageElement = $("<h1> Please log in or register. </h1>");
     } else {
-      return "Welcome to the myFlix API, thanks for being a registered user!"
+      let messageElement = $("<h1> Welcome to the myFlix API, thanks for being a registered user! </h1>");
     };
+    modalBody.append(messageElement);
+    })()
+    
   }
 );
 
