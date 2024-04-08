@@ -47,9 +47,18 @@ h5 {
 h6 {
   text-decoration: underline;
 }
-/* code {
-  margin: ;
-} */
 table {
   margin: 15px;
+}
+.visible {
+  visibility: visible;
+}
+.invisible {
+  visibility: hidden;
+}
+.centered{
+  display: flex;
+	align-items:center;
+  justify-content: left;
+	min-height: 100vh;
 }

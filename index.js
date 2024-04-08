@@ -69,29 +69,6 @@ const { check, validationResult } = require("express-validator");
 // Pass through the static files stored in the public folder
 app.use(express.static("public"));
 
-// READ - GET - 
-app.get(
-  "/",
-  (req, res) => {
-    passport.authenticate("jwt", { session: false }, err, user);
-    (function showModal(err, user){
-      let modalBody = $(".modal-body");
-    // Clear existing modal content
-    modalBody.empty();
-    if (err) { 
-      console.error(err);
-      res.status(500).send("Error: " + err); }
-    if (!req.user){
-      // Message Element
-        let messageElement = $("<h1> Please log in or register. </h1>");
-    } else {
-      let messageElement = $("<h1> Welcome to the myFlix API, thanks for being a registered user! </h1>");
-    };
-    modalBody.append(messageElement);
-    })()
-    
-  }
-);
 
 // READ - GET - Return a list of ALL movies to the user
 app.get(
@@ -656,6 +633,55 @@ app.get(
         console.error(err);
         res.status(500).send("Error: " + err);
       });
+  }
+);
+// READ - GET -
+app.get(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    let messageBody = document.querySelector("#messageBody");
+    // Clear existing modal content
+    messageBody.empty();
+    let messageElement = document.createElement("messageElement");
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    }
+    if (!req.user) {
+      // Message Element
+
+      messageElement = "<h2> Please log in or register. </h2>";
+    } else {
+      messageElement =
+        "<h2> Welcome to the myFlix API, thanks for being a registered user! </h2>";
+    }
+    messageBody.append(messageElement);
+  }
+);
+
+// READ - GET -
+app.get(
+  "/index",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    let messageBody = document.querySelector("#messageBody");
+    // Clear existing modal content
+    messageBody.empty();
+    let messageElement = document.createElement("messageElement");
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    }
+    if (!req.user) {
+      // Message Element
+
+      messageElement = "<h2> Please log in or register. </h2>";
+    } else {
+      messageElement =
+        "<h2> Welcome to the myFlix API, thanks for being a registered user! </h2>";
+    }
+    messageBody.append(messageElement);
   }
 );
 
