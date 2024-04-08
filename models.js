@@ -16,7 +16,7 @@ let movieSchema = mongoose.Schema({
     TopMovies: String,
   },
   Actors: [String],
-  ImagePath: String
+  ImagePath: String,
 });
 
 let userSchema = mongoose.Schema({
@@ -34,7 +34,7 @@ userSchema.statics.hashPassword = (password) => {
   return bcrypt.hashSync(password, 10);
 };
 
-userSchema.methods.validatePassword = function(password) {
+userSchema.methods.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.Password);
 };
 
@@ -47,7 +47,7 @@ let directorSchema = mongoose.Schema({
   Name: String,
   Bio: String,
   Birthday: Date,
-  Deathday: Date
+  Deathday: Date,
 });
 
 let actorsSchema = mongoose.Schema({
@@ -57,11 +57,11 @@ let actorsSchema = mongoose.Schema({
   Deathday: Date,
 });
 
-let Movie = mongoose.model('Movie', movieSchema);
-let User = mongoose.model('User', userSchema);
-let Director = mongoose.model('Director', directorSchema);
-let Genre = mongoose.model('Genre', genreSchema);
-let Actor = mongoose.model('Actor', actorsSchema);
+let Movie = mongoose.model("Movie", movieSchema);
+let User = mongoose.model("User", userSchema);
+let Director = mongoose.model("Director", directorSchema);
+let Genre = mongoose.model("Genre", genreSchema);
+let Actor = mongoose.model("Actor", actorsSchema);
 
 module.exports.Movie = Movie;
 module.exports.User = User;
